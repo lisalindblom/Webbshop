@@ -93,6 +93,10 @@ export const showCart = (selectedItems: Products[]) => {
     bookContainer.appendChild(quantity);
     bookContainer.appendChild(deleteButton);
     container.appendChild(bookContainer);
+
+    const cartBadge = document.getElementById("cartItems") as HTMLSpanElement;
+    let badgeNumber = selectedItems.length;
+    cartBadge.innerHTML = badgeNumber.toString();
   }
 };
 
