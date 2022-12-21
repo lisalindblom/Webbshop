@@ -25,7 +25,7 @@ function filterAlternatives(products: Products[]) {
 }
 console.log(filteredList);
 
-/***************test*************** */
+//***************test***************//
 const filteredData = products.filter(
   (products) => products.type === filterForm.value
 );
