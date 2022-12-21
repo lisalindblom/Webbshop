@@ -99,11 +99,9 @@ export const showCart = (selectedItems: Products[]) => {
 //Hantera bortagning
 export const handleRemove = (product: Products) => {
   for (let i = 0; i < selectedItems.length; i++) {
-    
     if (selectedItems[i] === product) {
-    selectedItems.splice(i, 1)
+      selectedItems.splice(i, 1);
     }
-
   }
   //localStorage.setItem("storageList", JSON.stringify(selectedItems));
   let sum: number = calcPrice(selectedItems);
@@ -111,9 +109,8 @@ export const handleRemove = (product: Products) => {
   return sum;
 };
 
-
-
 export function displayPaymentForm() {
+  const formContainer: HTMLDivElement = document.createElement("div");
   const payForm: HTMLFormElement = document.createElement("form");
   const formTitle: HTMLElement = document.createElement("h2");
   const personInfoHead: HTMLLabelElement = document.createElement("label");
@@ -167,32 +164,34 @@ export function displayPaymentForm() {
   submitButton.type = "submit";
   submitButton.value = "Slutför";
 
-  payForm.classList.add("payForm");
-  personInfoHead.classList.add("payForm__personInfoHead");
-  firstName.classList.add("payform__firstName");
-  lastName.classList.add("payform__lastName");
-  personalNo.classList.add("payform__personalNo");
-  phone.classList.add("payform__phone");
-  addressHead.classList.add("payform__addressHead");
-  streetName.classList.add("payform__streetName");
-  postalCode.classList.add("payform__postalCode");
-  cityName.classList.add("payform__cityName");
-  countryName.classList.add("payform__countryName");
-  paymentDetails.classList.add("payform__paymentDetails");
-  paymentMessage.classList.add("payform__paymentMessage");
-  cardContainer.classList.add("payForm__cardContainer");
-  visaRadio.classList.add("payForm__cardContainer--visaRadio");
-  visaText.classList.add("payForm__cardContainer--visaText");
-  masterRadio.classList.add("payForm__cardContainer--masterRadio");
-  masterText.classList.add("payForm__cardContainer--masterText");
-  klarnaRadio.classList.add("payForm__cardContainer--klarnaRadio");
-  klarnaText.classList.add("payForm__cardContainer--klarnaText");
-  cardNo.classList.add("payform__cardNo");
-  cardDate.classList.add("payform__cardDate");
-  cardCVC.classList.add("payform__cardCVC");
-  submitButton.classList.add("payform__sudmitButton");
+  formContainer.classList.add("formContainer");
+  payForm.classList.add("formContainer__payForm");
+  personInfoHead.classList.add("formContainer__payForm--personInfoHead");
+  firstName.classList.add("formContainer__payForm--firstName");
+  lastName.classList.add("formContainer__payForm--lastName");
+  personalNo.classList.add("formContainer__payForm--personalNo");
+  phone.classList.add("formContainer__payForm--phone");
+  addressHead.classList.add("formContainer__payForm--addressHead");
+  streetName.classList.add("formContainer__payForm--streetName");
+  postalCode.classList.add("formContainer__payForm--postalCode");
+  cityName.classList.add("formContainer__payForm--cityName");
+  countryName.classList.add("formContainer__payForm--countryName");
+  paymentDetails.classList.add("formContainer__payForm--paymentDetails");
+  paymentMessage.classList.add("formContainer__payForm--paymentMessage");
+  cardContainer.classList.add("formContainer__payForm--cardContainer");
+  visaRadio.classList.add("visaRadio");
+  visaText.classList.add("visaText");
+  masterRadio.classList.add("masterRadio");
+  masterText.classList.add("masterText");
+  klarnaRadio.classList.add("klarnaRadio");
+  klarnaText.classList.add("klarnaText");
+  cardNo.classList.add("formContainer__payForm--cardNo");
+  cardDate.classList.add("formContainer__payForm--cardDate");
+  cardCVC.classList.add("formContainer__payForm--cardCVC");
+  submitButton.classList.add("formContainer__payForm--sudmitButton");
 
-  document.body.appendChild(payForm);
+  document.body.appendChild(formContainer);
+  formContainer.appendChild(payForm);
   payForm.appendChild(formTitle);
   payForm.appendChild(personInfoHead);
   payForm.appendChild(firstName);
