@@ -1,12 +1,30 @@
 
 .navbar-light {
-    .navbar-toggler {
+
+    //storlek och border på hamburgaren 
+    .navbar-toggler { 
         border: none;
         font-size: 2rem;
     }
+
+    //färgen på ränderna 
     .navbar-toggler-icon {
 
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(179, 30, 30)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     
     }
+}
+
+
+// item badge // antal produkter i varukorgen
+#cartItems { 
+    font-size:0.7rem;
+    color: white;
+    background: red;
+    border-radius:50%;
+    padding: 0 5px;
+    position:relative;
+    left:-5px;
+    top:-10px;
+    
 }
