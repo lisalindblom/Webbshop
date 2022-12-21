@@ -83,7 +83,7 @@ export const showCart = (selectedItems: Products[]) => {
     bookContainer.classList.add(selectedItems[i].type);
     title.innerHTML = selectedItems[i].title;
     img.src = selectedItems[i].img;
-    price.innerHTML = JSON.stringify(selectedItems[i].prize);
+    price.innerHTML = JSON.stringify(selectedItems[i].price);
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
