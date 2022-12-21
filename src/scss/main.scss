@@ -4,14 +4,8 @@
 @use 'productpage';
 @use 'checkout';
 
-.wrapper__pageImage {
-    width: 50px;
 
-    &--url {
-        object-fit: contain;
-        object-position: center;
-    }
-}
+
 
 
 
