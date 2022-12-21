@@ -45,6 +45,11 @@ function filterAlternatives(products: Products[]) {
   console.log(filteredList);
   if (selectedFilter === "Alla") {
     console.log("alla");
+    let container = document.getElementById(
+      "productpageWrapper"
+    ) as HTMLDivElement;
+
+    container.innerHTML = "";
     showProducts(products);
   } else {
     showFilteredProducts(filteredList);
