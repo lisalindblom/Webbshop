@@ -51,4 +51,4 @@ export let products: Products[] = [
   ),
 ];
 
-export let selectedItems:Products[] = [];
+export let selectedItems:Products[] = JSON.parse(localStorage.getItem("storageList") || "[]");
