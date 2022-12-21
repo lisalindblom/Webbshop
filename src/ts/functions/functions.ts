@@ -23,7 +23,7 @@ export const showProducts = (products: Products[]) => {
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = JSON.stringify(products[i].prize);
+    price.innerHTML = JSON.stringify(products[i].price);
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -50,7 +50,7 @@ const calcPrice = (selectedItems: Products[]) => {
   let sum: number = 0;
 
   for (let i = 0; i < selectedItems.length; i++) {
-    sum += selectedItems[i].prize;
+    sum += selectedItems[i].price;
   }
   return sum;
 };
