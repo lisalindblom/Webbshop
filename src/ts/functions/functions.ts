@@ -36,6 +36,7 @@ export const showProducts = (products: Products[]) => {
 
 //Hantera klick/köp
 export const handleCLick = (product: Products) => {
+
   selectedItems.push(product);
   localStorage.setItem("storageList", JSON.stringify(selectedItems));
   console.log(selectedItems);
@@ -63,55 +64,57 @@ export const showCart = (selectedItems: Products[]) => {
   ) as HTMLDivElement;
 
   for (let i = 0; i < selectedItems.length; i++) {
-    let bookContainer = document.createElement("div");
-    let title = document.createElement("h3");
-    let img = document.createElement("img");
-    let price = document.createElement("p");
-    let quantity = document.createElement("p");
-    let addButton = document.createElement("button");
-    let removeButton = document.createElement("button");
-    let deleteButton = document.createElement("button");
-    removeButton.innerHTML = "-";
-    addButton.innerHTML = "+";
-    deleteButton.innerHTML = "delete";
-    addButton.addEventListener("click", () => {
-      handleCLick(products[i]);
-    });
-    removeButton.addEventListener("click", () => {
-      handleRemove(products[i]);
-    });
-    bookContainer.classList.add(selectedItems[i].type);
-    title.innerHTML = selectedItems[i].title;
-    img.src = selectedItems[i].img;
-    price.innerHTML = JSON.stringify(selectedItems[i].price);
+    let noOfProducts: number = 0;
+    noOfProducts++;
 
-    bookContainer.appendChild(title);
-    bookContainer.appendChild(img);
-    bookContainer.appendChild(price);
-    bookContainer.appendChild(addButton);
-    bookContainer.appendChild(removeButton);
-    bookContainer.appendChild(quantity);
-    bookContainer.appendChild(deleteButton);
-    container.appendChild(bookContainer);
+      let bookContainer = document.createElement("div");
+      let title = document.createElement("h3");
+      let img = document.createElement("img");
+      let price = document.createElement("p");
+      let quantity = document.createElement("p");
+      let addButton = document.createElement("button");
+      let removeButton = document.createElement("button");
+      let deleteButton = document.createElement("button");
+
+      quantity.innerHTML = JSON.stringify(noOfProducts++);
+      removeButton.innerHTML = "-";
+      addButton.innerHTML = "+";
+      deleteButton.innerHTML = "delete";
+      addButton.addEventListener("click", () => {
+        handleCLick(products[i]);
+      });
+      removeButton.addEventListener("click", () => {
+        handleRemove(products[i]);
+      });
+      bookContainer.classList.add(selectedItems[i].type);
+      price.innerHTML = JSON.stringify(selectedItems[i].price);
+      title.innerHTML = selectedItems[i].title;
+      img.src = selectedItems[i].img;
+
+      bookContainer.appendChild(title);
+      bookContainer.appendChild(img);
+      bookContainer.appendChild(price);
+      bookContainer.appendChild(addButton);
+      bookContainer.appendChild(removeButton);
+      bookContainer.appendChild(quantity);
+      bookContainer.appendChild(deleteButton);
+      container.appendChild(bookContainer);
+    
   }
 };
 
 //Hantera bortagning
 export const handleRemove = (product: Products) => {
   for (let i = 0; i < selectedItems.length; i++) {
-    
     if (selectedItems[i] === product) {
-    selectedItems.splice(i, 1)
+      selectedItems.splice(i, 1);
     }
-
   }
   //localStorage.setItem("storageList", JSON.stringify(selectedItems));
   let sum: number = calcPrice(selectedItems);
   console.log(sum);
   return sum;
 };
-
-
 
 export function displayPaymentForm() {
   const payForm: HTMLFormElement = document.createElement("form");
@@ -218,3 +221,4 @@ export function displayPaymentForm() {
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
 }
+
