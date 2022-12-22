@@ -87,7 +87,7 @@ export const showCart = (selectedItems: Products[]) => {
         handleCLick(products[i]);
       });
       removeButton.addEventListener("click", () => {
-        handleRemove(selectedItems[i].id);
+        handleRemove(selectedItems[i].id, noOfProducts);
       });
       deleteButton.addEventListener("click", () => {
         handleDelete(selectedItems[i].id);
@@ -116,12 +116,18 @@ export const showCart = (selectedItems: Products[]) => {
 };
 
 //Hantera bortagning av 1 produkt
-export const handleRemove = (target: number) => {
+export const handleRemove = (target: number, noOfProducts:number) => {
   let isDeleted: boolean = false;
 
   for (let i = 0; i < selectedItems.length; i++) {
     if (target === selectedItems[i].id) {
       if (!isDeleted) {
+        if (noOfProducts < 2) {
+          let confirm = window.confirm("Vill du ta bort produkten från kundvagnen?");
+          if (!confirm) {
+            return;
+          }
+        }
         selectedItems.splice(i, 1);
         isDeleted = true;
       }
@@ -140,7 +146,12 @@ export const handleRemove = (target: number) => {
 // Hantera delete. Needs work.
 export const handleDelete = (target:number) => {
 
-  for (let i = 0; i < selectedItems.length; i++) {
+  let confirm = window.confirm("Vill du ta bort produkten från kundvagnen?");
+          if (!confirm) {
+            return;
+          }
+        else {
+  for (let i = selectedItems.length - 1; i >= 0; i--) {
     if (target === selectedItems[i].id) {
         selectedItems.splice(i, 1);
       }
@@ -153,6 +164,7 @@ export const handleDelete = (target:number) => {
   container.innerHTML = "";
   showCart(selectedItems);
   console.log(selectedItems);
+};
 };
 
 
