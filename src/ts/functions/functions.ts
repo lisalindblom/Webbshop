@@ -146,19 +146,6 @@ export function cartBadge() {
   console.log(cart1.innerHTML);
 }
 
-export function cartBadge() {
-  let LSgetList: string = localStorage.getItem("storageList") || "[]";
-  let LSListJSON: Products[] = JSON.parse(LSgetList);
-
-  const cart1 = document.getElementById("cartItems") as HTMLSpanElement;
-  let badgeNumber = LSListJSON.length;
-  cart1.innerHTML = badgeNumber.toString();
-
-  const cart2 = document.getElementById("cartItemsDesktop") as HTMLSpanElement;
-  cart2.innerHTML = badgeNumber.toString();
-
-  console.log(cart1.innerHTML);
-}
 //Hantera bortagning av 1 produkt
 export const handleRemove = (target: number, noOfProducts: number) => {
   let isDeleted: boolean = false;
