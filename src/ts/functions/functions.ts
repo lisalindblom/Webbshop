@@ -5,6 +5,7 @@ import { products, selectedItems } from "../services.ts/data";
 import { products as filteredList } from "../services.ts/data";
 
 export const showProducts = (products: Products[]) => {
+  productSort(selectedItems);
   let container = document.getElementById(
     "productpageWrapper"
   ) as HTMLDivElement;
@@ -44,6 +45,14 @@ export const handleCLick = (product: Products) => {
   localStorage.setItem("storageList", JSON.stringify(selectedItems));
   console.log(selectedItems);
   let sum: number = calcPrice(selectedItems);
+  if (document.getElementById("checkoutpageWrapper")) {
+  let container = document.getElementById(
+    "checkoutpageWrapper"
+  ) as HTMLDivElement;
+  container.innerHTML = "";
+
+  showCart(selectedItems);
+  }
   console.log(sum);
   return sum;
 };
@@ -108,7 +117,7 @@ export const showCart = (selectedItems: Products[]) => {
     }
 
     // varukorgen och nummer badge
-      const cartBadge = document.querySelectorAll("#cartItems");
+    const cartBadge = document.querySelectorAll("#cartItems");
 
     let badgeNumber = selectedItems.length;
     //cartBadge[i].innerHTML = badgeNumber.toString();
@@ -116,14 +125,16 @@ export const showCart = (selectedItems: Products[]) => {
 };
 
 //Hantera bortagning av 1 produkt
-export const handleRemove = (target: number, noOfProducts:number) => {
+export const handleRemove = (target: number, noOfProducts: number) => {
   let isDeleted: boolean = false;
 
   for (let i = 0; i < selectedItems.length; i++) {
     if (target === selectedItems[i].id) {
       if (!isDeleted) {
         if (noOfProducts < 2) {
-          let confirm = window.confirm("Vill du ta bort produkten från kundvagnen?");
+          let confirm = window.confirm(
+            "Vill du ta bort produkten från kundvagnen?"
+          );
           if (!confirm) {
             return;
           }
@@ -143,31 +154,29 @@ export const handleRemove = (target: number, noOfProducts:number) => {
   console.log(selectedItems);
 };
 
-// Hantera delete. Needs work.
-export const handleDelete = (target:number) => {
-
+// Hantera delete.
+export const handleDelete = (target: number) => {
   let confirm = window.confirm("Vill du ta bort produkten från kundvagnen?");
-          if (!confirm) {
-            return;
-          }
-        else {
-  for (let i = selectedItems.length - 1; i >= 0; i--) {
-    if (target === selectedItems[i].id) {
+  if (!confirm) {
+    return;
+  } else {
+    for (let i = selectedItems.length - 1; i >= 0; i--) {
+      if (target === selectedItems[i].id) {
         selectedItems.splice(i, 1);
       }
     }
 
-  localStorage.setItem("storageList", JSON.stringify(selectedItems));
-  let container = document.getElementById(
-    "checkoutpageWrapper"
-  ) as HTMLDivElement;
-  container.innerHTML = "";
-  showCart(selectedItems);
-  console.log(selectedItems);
-};
+    localStorage.setItem("storageList", JSON.stringify(selectedItems));
+    let container = document.getElementById(
+      "checkoutpageWrapper"
+    ) as HTMLDivElement;
+    container.innerHTML = "";
+    showCart(selectedItems);
+    console.log(selectedItems);
+  }
 };
 
-
+// Räknare för antar produkter av varje sort i köplistan
 export const counter = (products: Products[], target: string) => {
   let sum: number = 0;
   for (let i = 0; i < products.length; i++) {
@@ -373,4 +382,22 @@ export function filterProducts() {
       container.appendChild(bookContainer);
     }
   };
+}
+
+
+// Sorteringsfunktion av köplistan. -- gör så artiklarna inte hoppar runt när man raderar.
+export const productSort = (selectedItems: Products[], desc: boolean = true) => {
+  return selectedItems.sort((a: Products, b: Products) => {
+    if (desc) {
+      if (a.title > b.title) return 1;
+      if (a.title < b.title) return -1;
+
+      return 0;
+    } else {
+      if (a.title > b.title) return -1;
+      if (a.title < b.title) return 1;
+
+      return 0;
+    }
+  });
 }
