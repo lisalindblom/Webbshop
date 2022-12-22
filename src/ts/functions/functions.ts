@@ -127,6 +127,12 @@ export const showCart = (selectedItems: Products[]) => {
       bookContainer.appendChild(deleteButton);
       container.appendChild(bookContainer);
     }
+
+    // varukorgen och nummer badge
+    const cartBadge = document.querySelectorAll("#cartItems");
+
+    let badgeNumber = selectedItems.length;
+    //cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
 
