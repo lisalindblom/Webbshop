@@ -22,9 +22,11 @@ export const showProducts = (products: Products[]) => {
       handleCLick(products[i]);
     });
     bookContainer.classList.add(products[i].type);
-    /********************************************** */
     bookContainer.classList.add("bookContainer");
-    /*********************************************** */
+    price.classList.add(
+      "price"
+    ); /****************************************************************** */
+
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
@@ -368,6 +370,8 @@ export function filterProducts() {
       });
       bookContainer.classList.add(filteredList[i].type);
       bookContainer.classList.add("bookContainer");
+      price.classList.add("price");
+      /***************************************** */
 
       title.innerHTML = filteredList[i].title;
       img.src = filteredList[i].img;
