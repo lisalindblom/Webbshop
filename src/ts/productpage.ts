@@ -1,4 +1,5 @@
 import {
+  cartBadge,
   filterProducts,
   handleCLick,
   showProducts,
@@ -9,3 +10,4 @@ import { products as filteredList } from "./services.ts/data";
 
 showProducts(filteredList);
 filterProducts();
+cartBadge();

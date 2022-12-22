@@ -18,8 +18,11 @@ export const showProducts = (products: Products[]) => {
     let price = document.createElement("p");
     let button = document.createElement("button");
     button.innerHTML = "Buy";
+    button.classList.add("buyButton");
     button.addEventListener("click", () => {
       handleCLick(products[i]);
+      ///CARTBADGE
+      cartBadge();
     });
     bookContainer.classList.add(products[i].type);
     /********************************************** */
@@ -46,12 +49,12 @@ export const handleCLick = (product: Products) => {
   console.log(selectedItems);
   let sum: number = calcPrice(selectedItems);
   if (document.getElementById("checkoutpageWrapper")) {
-  let container = document.getElementById(
-    "checkoutpageWrapper"
-  ) as HTMLDivElement;
-  container.innerHTML = "";
+    let container = document.getElementById(
+      "checkoutpageWrapper"
+    ) as HTMLDivElement;
+    container.innerHTML = "";
 
-  showCart(selectedItems);
+    showCart(selectedItems);
   }
   console.log(sum);
   return sum;
@@ -91,15 +94,24 @@ export const showCart = (selectedItems: Products[]) => {
       quantity.innerHTML = JSON.stringify(noOfProducts);
       removeButton.innerHTML = "-";
       addButton.innerHTML = "+";
+      addButton.classList.add("addButton");
       deleteButton.innerHTML = "delete";
+      deleteButton.classList.add("deleteButton");
+
       addButton.addEventListener("click", () => {
         handleCLick(products[i]);
+        ///CARTBADGE
+        cartBadge();
       });
       removeButton.addEventListener("click", () => {
         handleRemove(selectedItems[i].id, noOfProducts);
+        ///CARTBADGE
+        cartBadge();
       });
       deleteButton.addEventListener("click", () => {
         handleDelete(selectedItems[i].id);
+        ///CARTBADGE
+        cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
       price.innerHTML = JSON.stringify(selectedItems[i].price);
@@ -115,14 +127,22 @@ export const showCart = (selectedItems: Products[]) => {
       bookContainer.appendChild(deleteButton);
       container.appendChild(bookContainer);
     }
-
-    // varukorgen och nummer badge
-    const cartBadge = document.querySelectorAll("#cartItems");
-
-    let badgeNumber = selectedItems.length;
-    //cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
+
+export function cartBadge() {
+  let LSgetList: string = localStorage.getItem("storageList") || "[]";
+  let LSListJSON: Products[] = JSON.parse(LSgetList);
+
+  const cart1 = document.getElementById("cartItems") as HTMLSpanElement;
+  let badgeNumber = LSListJSON.length;
+  cart1.innerHTML = badgeNumber.toString();
+
+  const cart2 = document.getElementById("cartItemsDesktop") as HTMLSpanElement;
+  cart2.innerHTML = badgeNumber.toString();
+
+  console.log(cart1.innerHTML);
+}
 
 //Hantera bortagning av 1 produkt
 export const handleRemove = (target: number, noOfProducts: number) => {
@@ -384,9 +404,11 @@ export function filterProducts() {
   };
 }
 
-
 // Sorteringsfunktion av köplistan. -- gör så artiklarna inte hoppar runt när man raderar.
-export const productSort = (selectedItems: Products[], desc: boolean = true) => {
+export const productSort = (
+  selectedItems: Products[],
+  desc: boolean = true
+) => {
   return selectedItems.sort((a: Products, b: Products) => {
     if (desc) {
       if (a.title > b.title) return 1;
@@ -400,4 +422,4 @@ export const productSort = (selectedItems: Products[], desc: boolean = true) => 
       return 0;
     }
   });
-}
+};
