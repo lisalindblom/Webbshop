@@ -6,7 +6,7 @@
         position: absolute;
         right: 24%;
         transform: translatex(100%);
-        position: fixed;
+        //position: fixed;
     }
 
     //storlek och border på hamburgaren 
@@ -31,7 +31,7 @@
 
 
 // item badge // antal produkter i varukorgen
-#cartItems { 
+#cartItems, #cartItemsDesktop { 
     font-size:0.7rem;
     color: white;
     background: red;
