@@ -46,12 +46,12 @@ export const handleCLick = (product: Products) => {
   console.log(selectedItems);
   let sum: number = calcPrice(selectedItems);
   if (document.getElementById("checkoutpageWrapper")) {
-  let container = document.getElementById(
-    "checkoutpageWrapper"
-  ) as HTMLDivElement;
-  container.innerHTML = "";
+    let container = document.getElementById(
+      "checkoutpageWrapper"
+    ) as HTMLDivElement;
+    container.innerHTML = "";
 
-  showCart(selectedItems);
+    showCart(selectedItems);
   }
   console.log(sum);
   return sum;
@@ -120,7 +120,7 @@ export const showCart = (selectedItems: Products[]) => {
     const cartBadge = document.querySelectorAll("#cartItems");
 
     let badgeNumber = selectedItems.length;
-    //cartBadge[i].innerHTML = badgeNumber.toString();
+    // cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
 
@@ -384,9 +384,11 @@ export function filterProducts() {
   };
 }
 
-
 // Sorteringsfunktion av köplistan. -- gör så artiklarna inte hoppar runt när man raderar.
-export const productSort = (selectedItems: Products[], desc: boolean = true) => {
+export const productSort = (
+  selectedItems: Products[],
+  desc: boolean = true
+) => {
   return selectedItems.sort((a: Products, b: Products) => {
     if (desc) {
       if (a.title > b.title) return 1;
@@ -400,4 +402,4 @@ export const productSort = (selectedItems: Products[], desc: boolean = true) => 
       return 0;
     }
   });
-}
+};
