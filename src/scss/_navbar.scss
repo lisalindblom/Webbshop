@@ -1,10 +1,22 @@
 
 .navbar-light {
+    //position: relative;
+   
+    .cartContainer{
+        position: absolute;
+        right: 24%;
+        transform: translatex(100%);
+        position: fixed;
+    }
 
     //storlek och border på hamburgaren 
     .navbar-toggler { 
         border: none;
         font-size: 2rem;
+
+        .cartContainer{
+            font-size: 2.5rem;
+        }
     }
 
     //färgen på ränderna 
@@ -13,6 +25,8 @@
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(179, 30, 30)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     
     }
+
+   
 }
 
 
@@ -26,5 +40,30 @@
     position:relative;
     left:-5px;
     top:-10px;
+    
+}
+
+//mobilstorlet item badge
+
+@media screen and (max-width: 768px) {
+
+    .cartContainer{
+        margin-right: 5px;
+
+    #cartItems { 
+     
+        top:-20px;
+        font-size: 1rem;
+       
+        
+    }
+
+    }
+
+
+    #hideForMobile {
+        display: none;
+
+    }
     
 }
