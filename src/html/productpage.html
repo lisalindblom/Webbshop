@@ -82,26 +82,34 @@
         </div>
       </nav>
     </header>
-    <main class="container row">
+    <main class="container">
       <form id="filterForm">
         <h3>Filter</h3>
-        <input type="radio" id="btnOne" name="filter" value="Alla" />
-        <label for="btnOne">Alla</label><br />
-        <input type="radio" id="btnTwo" name="filter" value="Pocket" />
-        <label for="btnTwo">Pocket</label><br />
-        <input type="radio" id="btnThree" name="filter" value="Häftad" />
-        <label for="btnThree">Häftad</label>
-        <input type="radio" id="btnFour" name="filter" value="E-bok" />
-        <label for="btnFour">E-bok</label>
-        <input type="radio" id="btnFive" name="filter" value="Inbunden" />
-        <label for="btnFive">Inbunden</label>
+        <div>
+          <input type="radio" id="btnOne" name="filter" value="Alla" />
+          <label for="btnOne">Alla</label><br />
+        </div>
+        <div>
+          <input type="radio" id="btnTwo" name="filter" value="Pocket" />
+          <label for="btnTwo">Pocket</label><br />
+        </div>
+        <div>
+          <input type="radio" id="btnThree" name="filter" value="Häftad" />
+          <label for="btnThree">Häftad</label>
+        </div>
+        <div>
+          <input type="radio" id="btnFour" name="filter" value="E-bok" />
+          <label for="btnFour">E-bok</label>
+        </div>
+        <div>
+          <input type="radio" id="btnFive" name="filter" value="Inbunden" />
+          <label for="btnFive">Inbunden</label>
+        </div>
+
         <button id="btnSubmit" type="button">Filtrera</button>
       </form>
 
-      <div
-        id="productpageWrapper"
-        class="container__mainContent col-sm-12 col-md-8 col-lg-8"
-      ></div>
+      <div id="productpageWrapper" class="container__mainContent"></div>
     </main>
 
     <footer class="pageFoot">
