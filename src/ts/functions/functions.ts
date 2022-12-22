@@ -63,60 +63,66 @@ export const showCart = (selectedItems: Products[]) => {
   ) as HTMLDivElement;
 
   for (let i = 0; i < selectedItems.length; i++) {
-    let noOfProducts: number = 0;
-    noOfProducts++;
-    let bookContainer = document.createElement("div");
-    let title = document.createElement("h3");
-    let img = document.createElement("img");
-    let price = document.createElement("p");
-    let quantity = document.createElement("p");
-    let addButton = document.createElement("button");
-    let removeButton = document.createElement("button");
-    let deleteButton = document.createElement("button");
+    if (!document.getElementById(selectedItems[i].id.toString())) {
+      let noOfProducts: number = counter(selectedItems, selectedItems[i].title);
+      let bookContainer = document.createElement("div");
+      let title = document.createElement("h3");
+      let img = document.createElement("img");
+      let price = document.createElement("p");
+      let quantity = document.createElement("p");
+      let addButton = document.createElement("button");
+      let removeButton = document.createElement("button");
+      let deleteButton = document.createElement("button");
 
-    quantity.innerHTML = JSON.stringify(noOfProducts++);
-    removeButton.innerHTML = "-";
-    addButton.innerHTML = "+";
-    deleteButton.innerHTML = "delete";
-    addButton.addEventListener("click", () => {
-      handleCLick(products[i]);
-    });
-    removeButton.addEventListener("click", () => {
-      handleRemove(products[i]);
-    });
-    bookContainer.classList.add(selectedItems[i].type);
-    price.innerHTML = JSON.stringify(selectedItems[i].price);
-    title.innerHTML = selectedItems[i].title;
-    img.src = selectedItems[i].img;
+      bookContainer.setAttribute("id", `${selectedItems[i].id}`);
+      quantity.innerHTML = JSON.stringify(noOfProducts);
+      removeButton.innerHTML = "-";
+      addButton.innerHTML = "+";
+      deleteButton.innerHTML = "delete";
+      addButton.addEventListener("click", () => {
+        handleCLick(products[i]);
+      });
+      removeButton.addEventListener("click", () => {
+        handleRemove(selectedItems[i].id);
+      });
+      deleteButton.addEventListener("click", () => {
+        handleDelete(selectedItems[i].id);
+      });
+      bookContainer.classList.add(selectedItems[i].type);
+      price.innerHTML = JSON.stringify(selectedItems[i].price);
+      title.innerHTML = selectedItems[i].title;
+      img.src = selectedItems[i].img;
 
-    bookContainer.appendChild(title);
-    bookContainer.appendChild(img);
-    bookContainer.appendChild(price);
-    bookContainer.appendChild(addButton);
-    bookContainer.appendChild(removeButton);
-    bookContainer.appendChild(quantity);
-    bookContainer.appendChild(deleteButton);
-    container.appendChild(bookContainer);
+      bookContainer.appendChild(title);
+      bookContainer.appendChild(img);
+      bookContainer.appendChild(price);
+      bookContainer.appendChild(addButton);
+      bookContainer.appendChild(removeButton);
+      bookContainer.appendChild(quantity);
+      bookContainer.appendChild(deleteButton);
+      container.appendChild(bookContainer);
+    }
 
     // varukorgen och nummer badge
-    const cartBadge = document.querySelectorAll("#cartItems");
+      const cartBadge = document.querySelectorAll("#cartItems");
 
     let badgeNumber = selectedItems.length;
     cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
 
-//Hantera bortagning
-export const handleRemove = (product: Products) => {
+//Hantera bortagning av 1 produkt
+export const handleRemove = (target: number) => {
   let isDeleted: boolean = false;
 
-  selectedItems.forEach((product) => {
-    let id = selectedItems.indexOf(product);
-    if (!isDeleted) {
-      selectedItems.splice(id, 1);
-      isDeleted = true;
+  for (let i = 0; i < selectedItems.length; i++) {
+    if (target === selectedItems[i].id) {
+      if (!isDeleted) {
+        selectedItems.splice(i, 1);
+        isDeleted = true;
+      }
     }
-  });
+  }
 
   localStorage.setItem("storageList", JSON.stringify(selectedItems));
   let container = document.getElementById(
@@ -125,6 +131,35 @@ export const handleRemove = (product: Products) => {
   container.innerHTML = "";
   showCart(selectedItems);
   console.log(selectedItems);
+};
+
+// Hantera delete. Needs work.
+export const handleDelete = (target:number) => {
+
+  for (let i = 0; i < selectedItems.length; i++) {
+    if (target === selectedItems[i].id) {
+        selectedItems.splice(i, 1);
+      }
+    }
+
+  localStorage.setItem("storageList", JSON.stringify(selectedItems));
+  let container = document.getElementById(
+    "checkoutpageWrapper"
+  ) as HTMLDivElement;
+  container.innerHTML = "";
+  showCart(selectedItems);
+  console.log(selectedItems);
+};
+
+
+export const counter = (products: Products[], target: string) => {
+  let sum: number = 0;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].title === target) {
+      sum++;
+    }
+  }
+  return sum;
 };
 
 export function displayPaymentForm() {
