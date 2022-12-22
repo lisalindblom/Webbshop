@@ -63,6 +63,8 @@ export const showCart = (selectedItems: Products[]) => {
   ) as HTMLDivElement;
 
   for (let i = 0; i < selectedItems.length; i++) {
+    let noOfProducts: number = 0;
+    noOfProducts++;
     let bookContainer = document.createElement("div");
     let title = document.createElement("h3");
     let img = document.createElement("img");
@@ -71,6 +73,8 @@ export const showCart = (selectedItems: Products[]) => {
     let addButton = document.createElement("button");
     let removeButton = document.createElement("button");
     let deleteButton = document.createElement("button");
+
+    quantity.innerHTML = JSON.stringify(noOfProducts++);
     removeButton.innerHTML = "-";
     addButton.innerHTML = "+";
     deleteButton.innerHTML = "delete";
@@ -81,9 +85,9 @@ export const showCart = (selectedItems: Products[]) => {
       handleRemove(products[i]);
     });
     bookContainer.classList.add(selectedItems[i].type);
+    price.innerHTML = JSON.stringify(selectedItems[i].price);
     title.innerHTML = selectedItems[i].title;
     img.src = selectedItems[i].img;
-    price.innerHTML = JSON.stringify(selectedItems[i].price);
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -104,15 +108,23 @@ export const showCart = (selectedItems: Products[]) => {
 
 //Hantera bortagning
 export const handleRemove = (product: Products) => {
-  for (let i = 0; i < selectedItems.length; i++) {
-    if (selectedItems[i] === product) {
-      selectedItems.splice(i, 1);
+  let isDeleted: boolean = false;
+
+  selectedItems.forEach((product) => {
+    let id = selectedItems.indexOf(product);
+    if (!isDeleted) {
+      selectedItems.splice(id, 1);
+      isDeleted = true;
     }
-  }
-  //localStorage.setItem("storageList", JSON.stringify(selectedItems));
-  let sum: number = calcPrice(selectedItems);
-  console.log(sum);
-  return sum;
+  });
+
+  localStorage.setItem("storageList", JSON.stringify(selectedItems));
+  let container = document.getElementById(
+    "checkoutpageWrapper"
+  ) as HTMLDivElement;
+  container.innerHTML = "";
+  showCart(selectedItems);
+  console.log(selectedItems);
 };
 
 export function displayPaymentForm() {

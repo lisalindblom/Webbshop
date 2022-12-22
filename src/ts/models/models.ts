@@ -6,6 +6,6 @@ export class Products {
     public year: number,
     public description: string,
     public price: number,
-    public active:boolean = false,
+    public id:number,
   ) {}
 }
