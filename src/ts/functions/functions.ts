@@ -98,9 +98,11 @@ export const showCart = (selectedItems: Products[]) => {
     bookContainer.appendChild(deleteButton);
     container.appendChild(bookContainer);
 
-    const cartBadge = document.getElementById("cartItems") as HTMLSpanElement;
+    // varukorgen och nummer badge
+    const cartBadge = document.querySelectorAll("#cartItems");
+
     let badgeNumber = selectedItems.length;
-    cartBadge.innerHTML = badgeNumber.toString();
+    cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
 
@@ -169,10 +171,13 @@ export function displayPaymentForm() {
   countryName.placeholder = "Land";
   paymentMessage.innerHTML = "Vargod välj betalningsätt:";
   visaRadio.type = "radio";
+  visaRadio.name = "pay";
   visaText.innerHTML = "Visa";
   masterRadio.type = "radio";
+  masterRadio.name = "pay";
   masterText.innerHTML = "Master Card";
   klarnaRadio.type = "radio";
+  klarnaRadio.name = "pay";
   klarnaText.innerHTML = "Klarna faktura";
   cardNo.placeholder = "kortnummer";
   cardDate.placeholder = "utgångsdatum";
