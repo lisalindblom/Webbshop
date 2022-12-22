@@ -94,9 +94,11 @@ export const showCart = (selectedItems: Products[]) => {
     bookContainer.appendChild(deleteButton);
     container.appendChild(bookContainer);
 
-    const cartBadge = document.getElementById("cartItems") as HTMLSpanElement;
+    // varukorgen och nummer badge
+    const cartBadge = document.querySelectorAll("#cartItems");
+
     let badgeNumber = selectedItems.length;
-    cartBadge.innerHTML = badgeNumber.toString();
+    cartBadge[i].innerHTML = badgeNumber.toString();
   }
 };
 
