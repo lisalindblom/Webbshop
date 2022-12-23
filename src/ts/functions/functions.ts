@@ -130,7 +130,76 @@ export const showCart = (selectedItems: Products[]) => {
       container.appendChild(bookContainer);
     }
   }
+  displayPayButton();
 };
+
+function displayConfirmation() {
+  const container = document.getElementById("mainContainer") as HTMLDivElement;
+  container.innerHTML = "";
+
+  const messageContainer: HTMLDivElement = document.createElement(
+    "div"
+  ) as HTMLDivElement;
+  const messageTitle: HTMLHeadingElement = document.createElement(
+    "h2"
+  ) as HTMLHeadingElement;
+  const orderNo: HTMLParagraphElement = document.createElement(
+    "p"
+  ) as HTMLParagraphElement;
+  const confirmationMessage: HTMLParagraphElement = document.createElement(
+    "p"
+  ) as HTMLParagraphElement;
+
+  const toStarPage: HTMLAnchorElement = document.createElement(
+    "a"
+  ) as HTMLAnchorElement;
+
+  messageContainer.classList.add("messageContainer");
+  messageTitle.classList.add("mesTitle");
+  orderNo.classList.add("orderNo");
+  confirmationMessage.classList.add("confirmationMessage");
+
+  messageTitle.innerHTML = "Orderbekräftelse";
+  orderNo.innerHTML = Math.random().toString();
+  confirmationMessage.innerHTML =
+    "Tack för ditt köp! Detta är en bekfräftelse av din order från Selmas Böcker. Du kommer att få ett mejl med spårningsnummer så fort din vara har lämnat vårt lager";
+  toStarPage.innerHTML = "Till startsidan";
+  toStarPage.href = "/src/index.html";
+
+  container.appendChild(messageContainer);
+  messageContainer.appendChild(messageTitle);
+  messageContainer.appendChild(orderNo);
+  messageContainer.appendChild(confirmationMessage);
+  messageContainer.appendChild(toStarPage);
+}
+
+function displayPayButton() {
+  let checkoutpageWrapper = document.getElementById(
+    "checkoutpageWrapper"
+  ) as HTMLDivElement;
+
+  const payButton: HTMLButtonElement = document.createElement("button");
+
+  payButton.classList.add("payButton");
+  payButton.setAttribute("id", "payButton");
+  payButton.innerHTML = "Till betalningen";
+
+  const container = document.getElementById("mainContainer") as HTMLDivElement;
+
+  if (checkoutpageWrapper.innerHTML !== "") {
+    container.appendChild(payButton);
+
+    payButton.addEventListener(
+      "click",
+      () => {
+        displayPaymentForm();
+      },
+      { once: true }
+    );
+  } else {
+    payButton.style.display = "none"; //??? måste funka när man tömmer korgen
+  }
+}
 
 export function cartBadge() {
   let LSgetList: string = localStorage.getItem("storageList") || "[]";
@@ -218,6 +287,7 @@ export function displayPaymentForm() {
   const lastName: HTMLInputElement = document.createElement("input");
   const personalNo: HTMLInputElement = document.createElement("input");
   const phone: HTMLInputElement = document.createElement("input");
+  const mail: HTMLInputElement = document.createElement("input");
 
   const addressHead: HTMLLabelElement = document.createElement("label");
   const streetName: HTMLInputElement = document.createElement("input");
@@ -238,6 +308,9 @@ export function displayPaymentForm() {
   const cardDate: HTMLInputElement = document.createElement("input");
   const cardCVC: HTMLInputElement = document.createElement("input");
   const submitButton: HTMLInputElement = document.createElement("input");
+  const mainContainer = document.getElementById(
+    "mainContainer"
+  ) as HTMLDivElement;
 
   personInfoHead.innerHTML = "Personuppgifter";
   formTitle.innerHTML = " Betalningsformulär";
@@ -247,6 +320,7 @@ export function displayPaymentForm() {
   lastName.placeholder = "Efternamn";
   personalNo.placeholder = "Personnummer";
   phone.placeholder = "Telefon";
+  mail.placeholder = "Epostadress";
   streetName.placeholder = "Gatuadress";
   postalCode.placeholder = "Postkod";
   cityName.placeholder = "Postort";
@@ -273,6 +347,7 @@ export function displayPaymentForm() {
   firstName.classList.add("formContainer__payForm--firstName");
   lastName.classList.add("formContainer__payForm--lastName");
   personalNo.classList.add("formContainer__payForm--personalNo");
+  mail.classList.add("formContainer__payForm--mail");
   phone.classList.add("formContainer__payForm--phone");
   addressHead.classList.add("formContainer__payForm--addressHead");
   streetName.classList.add("formContainer__payForm--streetName");
@@ -293,7 +368,7 @@ export function displayPaymentForm() {
   cardCVC.classList.add("formContainer__payForm--cardCVC");
   submitButton.classList.add("formContainer__payForm--sudmitButton");
 
-  document.body.appendChild(formContainer);
+  mainContainer.appendChild(formContainer);
   formContainer.appendChild(payForm);
   payForm.appendChild(formTitle);
   payForm.appendChild(personInfoHead);
@@ -301,6 +376,7 @@ export function displayPaymentForm() {
   payForm.appendChild(lastName);
   payForm.appendChild(personalNo);
   payForm.appendChild(phone);
+  payForm.appendChild(mail);
   payForm.appendChild(addressHead);
   payForm.appendChild(streetName);
   payForm.appendChild(postalCode);
@@ -319,6 +395,12 @@ export function displayPaymentForm() {
   payForm.appendChild(cardDate);
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
+
+  submitButton.addEventListener("click", () => {
+    localStorage.clear();
+    //måste uppdata så att det blir 0 i korgen
+    displayConfirmation();
+  });
 }
 
 export function filterProducts() {
