@@ -228,7 +228,7 @@ export const handleRemove = (target: number, noOfProducts: number) => {
             "Vill du ta bort produkten från kundvagnen?"
           );
           if (!confirm) {
-            return;
+            return 0;
           }
         }
         selectedItems.splice(i, 1);
@@ -250,7 +250,7 @@ export const handleRemove = (target: number, noOfProducts: number) => {
 export const handleDelete = (target: number) => {
   let confirm = window.confirm("Vill du ta bort produkten från kundvagnen?");
   if (!confirm) {
-    return;
+    return 0;
   } else {
     for (let i = selectedItems.length - 1; i >= 0; i--) {
       if (target === selectedItems[i].id) {
