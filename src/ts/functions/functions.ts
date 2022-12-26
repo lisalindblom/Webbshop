@@ -79,6 +79,7 @@ export const showCart = (selectedItems: Products[]) => {
   let container = document.getElementById(
     "checkoutpageWrapper"
   ) as HTMLDivElement;
+  productSort(selectedItems);
 
   for (let i = 0; i < selectedItems.length; i++) {
     if (!document.getElementById(selectedItems[i].id.toString())) {
@@ -101,7 +102,7 @@ export const showCart = (selectedItems: Products[]) => {
       deleteButton.classList.add("deleteButton");
 
       addButton.addEventListener("click", () => {
-        handleCLick(products[i]);
+        handleAdd(selectedItems[i].id);
         ///CARTBADGE
         cartBadge();
       });
@@ -266,6 +267,25 @@ export const handleDelete = (target: number) => {
     console.log(selectedItems);
   }
 };
+
+// Testfunktkion för add
+export const handleAdd = (target: number) => {
+  for (let i = selectedItems.length - 1; i >= 0; i--) {
+    if (target === selectedItems[i].id) {
+      selectedItems.push(selectedItems[i]);
+      localStorage.setItem("storageList", JSON.stringify(selectedItems));
+      let container = document.getElementById(
+        "checkoutpageWrapper"
+      ) as HTMLDivElement;
+      container.innerHTML = "";
+      showCart(selectedItems);
+      let sum: number = calcPrice(selectedItems);
+      console.log(sum);
+      return sum;
+    }
+  }
+};
+
 
 // Räknare för antar produkter av varje sort i köplistan
 export const counter = (products: Products[], target: string) => {
