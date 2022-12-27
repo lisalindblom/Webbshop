@@ -362,7 +362,7 @@ export function displayPaymentForm() {
   klarnaRadio.name = "pay";
   klarnaText.innerHTML = "Klarna faktura";
   cardNo.placeholder = "kortnummer";
-  cardDate.placeholder = "utgångsdatum";
+  cardDate.placeholder = "Utgångsdatum";
   cardCVC.placeholder = "CVC";
   submitButton.type = "submit";
   submitButton.value = "Slutför";
@@ -422,7 +422,36 @@ export function displayPaymentForm() {
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
 
-  submitButton.addEventListener("click", () => {
+  firstName.setAttribute("required", "");
+  lastName.setAttribute("required", "");
+  personalNo.setAttribute("required", "");
+  phone.setAttribute("required", "");
+  mail.setAttribute("required", "");
+  streetName.setAttribute("required", "");
+  postalCode.setAttribute("required", "");
+  cityName.setAttribute("required", "");
+  countryName.setAttribute("required", "");
+  visaRadio.setAttribute("required", "");
+  cardNo.setAttribute("required", "");
+  cardDate.setAttribute("required", "");
+  cardCVC.setAttribute("required", "");
+
+  mail.type = "email";
+  phone.setAttribute("pattern", "[0-9]{3}-[0-9]{7}");
+  phone.title = "07X-XXXXXXX";
+  personalNo.setAttribute("pattern", "[0-9]{8}-[0-9]{4}");
+  personalNo.title = "ÅÅÅÅMMDD-XXXX";
+  postalCode.setAttribute("pattern", "[0-9]{5}");
+  postalCode.title = "t.ex: 12345";
+  cardNo.type = "number";
+  cardNo.setAttribute("pattern", "([0-9]{10})");
+  cardNo.title = "10 siffror";
+  cardDate.setAttribute("pattern", "[1-9]{2}-[1-9]{2}-[0-9]{4})");
+  cardDate.title = "DD-MM-ÅÅÅÅ";
+  cardCVC.setAttribute("pattern", "[0-9]{3}");
+  cardCVC.title = "3 siffror";
+
+  payForm.addEventListener("submit", () => {
     localStorage.clear();
     displayConfirmation();
     cartBadge();
@@ -535,3 +564,11 @@ export const productSort = (
     }
   });
 };
+
+function formValidation() {
+  const fname = document.querySelector(".fname") as HTMLInputElement;
+
+  if (fname.value === "") {
+    alert("Namnfältet får inte vara tomt!");
+  }
+}

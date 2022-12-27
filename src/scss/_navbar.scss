@@ -1,5 +1,5 @@
 body{
-    padding-top: 80px;
+    padding-top: 130px;
 }
 
 
@@ -8,6 +8,12 @@ body{
 
 .navbar{
     background-color:  #74121D;
+
+    .pageTitle {
+        color: white;
+        font-size: 2rem;
+        padding: 20px;
+    }
     
     .cartContainer{
         position: absolute;
@@ -43,7 +49,6 @@ body{
 
 
 
-
 // item badge // antal produkter i varukorgen
 #cartItems, #cartItemsDesktop { 
     font-size:0.7rem;
@@ -75,9 +80,6 @@ body{
     }
 
 
-    #hideForMobile {
-        display: none;
 
-    }
     
 }
