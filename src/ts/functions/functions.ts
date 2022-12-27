@@ -26,14 +26,12 @@ export const showProducts = (products: Products[]) => {
     });
     bookContainer.classList.add(products[i].type);
     bookContainer.classList.add("bookContainer");
-    price.classList.add(
-      "price"
-    ); /****************************************************************** */
+    price.classList.add("price");
 
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = JSON.stringify(products[i].price);
+    price.innerHTML = JSON.stringify(products[i].price) + ":-";
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -95,10 +93,10 @@ export const showCart = (selectedItems: Products[]) => {
 
       bookContainer.setAttribute("id", `${selectedItems[i].id}`);
       quantity.innerHTML = JSON.stringify(noOfProducts);
-      removeButton.innerHTML = "-";
-      addButton.innerHTML = "+";
+      removeButton.innerHTML = " - ";
+      addButton.innerHTML = " + ";
       addButton.classList.add("addButton");
-      deleteButton.innerHTML = "delete";
+      deleteButton.innerHTML = "Ta bort";
       deleteButton.classList.add("deleteButton");
 
       addButton.addEventListener("click", () => {
@@ -117,19 +115,26 @@ export const showCart = (selectedItems: Products[]) => {
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
-      price.innerHTML = JSON.stringify(selectedItems[i].price);
+      price.innerHTML = (`Pris: ${selectedItems[i].price} st`);
       title.innerHTML = selectedItems[i].title;
       img.src = selectedItems[i].img;
 
-      bookContainer.appendChild(title);
       bookContainer.appendChild(img);
+      bookContainer.appendChild(title);
       bookContainer.appendChild(price);
-      bookContainer.appendChild(addButton);
       bookContainer.appendChild(removeButton);
-      bookContainer.appendChild(quantity);
+      bookContainer.appendChild(addButton);
       bookContainer.appendChild(deleteButton);
+      bookContainer.appendChild(quantity);
       container.appendChild(bookContainer);
     }
+  }
+  if (!document.querySelector(".totalSum")) {
+  let sum = calcPrice(selectedItems).toString();
+  let totalSum = document.createElement("p");
+  totalSum.innerHTML = "Total summa: " + sum;
+  totalSum.classList.add("totalSum");
+  container.appendChild(totalSum);
   }
   displayPayButton();
 };
@@ -195,8 +200,11 @@ function displayPayButton() {
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
+    
+    if (!document.querySelector(".payButton"))
+    {
     container.appendChild(payButton);
-
+    
     payButton.addEventListener(
       "click",
       () => {
@@ -204,6 +212,7 @@ function displayPayButton() {
       },
       { once: true }
     );
+    }
   } else {
     payButton.style.display = "none"; //??? måste funka när man tömmer korgen
   }

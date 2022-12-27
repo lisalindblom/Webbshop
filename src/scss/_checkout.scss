@@ -1,4 +1,16 @@
+@use "navbar";
+@use "footer";
+@use "paymentForm";
 
-@use 'navbar';
-@use 'footer';
-@use 'paymentForm'
+
+  .totalSum {
+    font-weight: bold;
+    display: inline;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    padding: 1%;
+    margin: 5px;
+  }
+
+
+

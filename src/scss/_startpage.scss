@@ -3,20 +3,38 @@
 @use 'footer';
 @use 'mixins';
 
-#startpagePresentation {
+body { 
+ @include mixins.font;
+}
+
+
+
+#startpageWrapper {
+    min-height: 90vh;
+ 
+    #startpagePresentation {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
 
-    img {
-        width: 70%;
+    #startpagePresentationText{
+        padding: 20px;
+        
+        #aboutSelma {
+            font-style: italic;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
     }
-
+    
     @include mixins.tablet {
         flex-direction: row;
         img {
             width: 40%;
         }
     }
+}
 }

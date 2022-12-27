@@ -10,4 +10,9 @@
         @content;
     }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,800;1,300&display=swap');
+@mixin font {
+    font-family: 'Noto Sans', sans-serif;
+}
 // @import "/src/scss/navbar"
