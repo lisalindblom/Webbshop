@@ -33,7 +33,7 @@ export const showProducts = (products: Products[]) => {
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = (`${selectedItems[i].price}:-`);
+    price.innerHTML = (`${products[i].price}:-`);
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
