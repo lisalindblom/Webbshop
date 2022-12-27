@@ -117,7 +117,7 @@ export const showCart = (selectedItems: Products[]) => {
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
-      price.innerHTML = (`Pris: ${selectedItems[i].price} :- st`);
+      price.innerHTML = `Pris: ${selectedItems[i].price} :- st`;
       title.innerHTML = selectedItems[i].title;
       img.src = selectedItems[i].img;
 
@@ -132,11 +132,11 @@ export const showCart = (selectedItems: Products[]) => {
     }
   }
   if (!document.querySelector(".totalSum")) {
-  let sum = calcPrice(selectedItems).toString();
-  let totalSum = document.createElement("p");
-  totalSum.innerHTML = "Total summa: " + sum;
-  totalSum.classList.add("totalSum");
-  container.appendChild(totalSum);
+    let sum = calcPrice(selectedItems).toString();
+    let totalSum = document.createElement("p");
+    totalSum.innerHTML = "Total summa: " + sum;
+    totalSum.classList.add("totalSum");
+    container.appendChild(totalSum);
   }
   displayPayButton();
 };
@@ -202,18 +202,16 @@ function displayPayButton() {
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
-    
-    if (!document.querySelector(".payButton"))
-    {
-    container.appendChild(payButton);
-    
-    payButton.addEventListener(
-      "click",
-      () => {
-        displayPaymentForm();
-      },
-      { once: true }
-    );
+    if (!document.querySelector(".payButton")) {
+      container.appendChild(payButton);
+
+      payButton.addEventListener(
+        "click",
+        () => {
+          displayPaymentForm();
+        },
+        { once: true }
+      );
     }
   } else {
     payButton.style.display = "none"; //??? måste funka när man tömmer korgen
