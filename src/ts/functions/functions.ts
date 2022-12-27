@@ -195,8 +195,11 @@ function displayPayButton() {
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
+    
+    if (!document.querySelector(".payButton"))
+    {
     container.appendChild(payButton);
-
+    
     payButton.addEventListener(
       "click",
       () => {
@@ -204,6 +207,7 @@ function displayPayButton() {
       },
       { once: true }
     );
+    }
   } else {
     payButton.style.display = "none"; //??? måste funka när man tömmer korgen
   }
