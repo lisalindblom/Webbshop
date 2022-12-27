@@ -159,6 +159,7 @@ function displayConfirmation() {
   messageTitle.classList.add("mesTitle");
   orderNo.classList.add("orderNo");
   confirmationMessage.classList.add("confirmationMessage");
+  toStarPage.classList.add("toStartPage");
 
   messageTitle.innerHTML = "Orderbekräftelse";
   orderNo.innerHTML = Math.random().toString();
@@ -180,12 +181,18 @@ function displayPayButton() {
   ) as HTMLDivElement;
 
   const payButton: HTMLButtonElement = document.createElement("button");
+  const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
 
   payButton.classList.add("payButton");
   payButton.setAttribute("id", "payButton");
   payButton.innerHTML = "Till betalningen";
-
+  isEmptyMessage.classList.add("isEmptyMessage");
   const container = document.getElementById("mainContainer") as HTMLDivElement;
+
+  if (checkoutpageWrapper.innerHTML === "") {
+    isEmptyMessage.innerHTML = "Varukorgen är tom. Gå till produktsidan...";
+    container.appendChild(isEmptyMessage);
+  }
 
   if (checkoutpageWrapper.innerHTML !== "") {
     container.appendChild(payButton);
@@ -285,7 +292,6 @@ export const handleAdd = (target: number) => {
     }
   }
 };
-
 
 // Räknare för antar produkter av varje sort i köplistan
 export const counter = (products: Products[], target: string) => {
