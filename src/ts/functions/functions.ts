@@ -26,12 +26,14 @@ export const showProducts = (products: Products[]) => {
     });
     bookContainer.classList.add(products[i].type);
     bookContainer.classList.add("bookContainer");
-    price.classList.add("price");
+    price.classList.add(
+      "price"
+    ); /****************************************************************** */
 
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = JSON.stringify(products[i].price) + ":-";
+    price.innerHTML = (`${selectedItems[i].price}:-`);
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -115,7 +117,7 @@ export const showCart = (selectedItems: Products[]) => {
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
-      price.innerHTML = `Pris: ${selectedItems[i].price} st`;
+      price.innerHTML = (`Pris: ${selectedItems[i].price} :- st`);
       title.innerHTML = selectedItems[i].title;
       img.src = selectedItems[i].img;
 
@@ -130,19 +132,11 @@ export const showCart = (selectedItems: Products[]) => {
     }
   }
   if (!document.querySelector(".totalSum")) {
-    let sum = calcPrice(selectedItems).toString();
-    let totalSum = document.createElement("p");
-    totalSum.innerHTML = "Total summa: " + sum;
-    totalSum.classList.add("totalSum");
-
-    const mainContainer = document.getElementById(
-      "mainContainer"
-    ) as HTMLDivElement;
-    mainContainer.appendChild(totalSum);
-
-    if (container.innerHTML === "") {
-      totalSum.style.display = "none";
-    }
+  let sum = calcPrice(selectedItems).toString();
+  let totalSum = document.createElement("p");
+  totalSum.innerHTML = "Total summa: " + sum;
+  totalSum.classList.add("totalSum");
+  container.appendChild(totalSum);
   }
   displayPayButton();
 };
@@ -208,16 +202,18 @@ function displayPayButton() {
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
-    if (!document.querySelector(".payButton")) {
-      container.appendChild(payButton);
-
-      payButton.addEventListener(
-        "click",
-        () => {
-          displayPaymentForm();
-        },
-        { once: true }
-      );
+    
+    if (!document.querySelector(".payButton"))
+    {
+    container.appendChild(payButton);
+    
+    payButton.addEventListener(
+      "click",
+      () => {
+        displayPaymentForm();
+      },
+      { once: true }
+    );
     }
   } else {
     payButton.style.display = "none"; //??? måste funka när man tömmer korgen
@@ -376,8 +372,8 @@ export function displayPaymentForm() {
   klarnaRadio.type = "radio";
   klarnaRadio.name = "pay";
   klarnaText.innerHTML = "Klarna faktura";
-  cardNo.placeholder = "Kortnummer";
-  cardDate.placeholder = "Utgångsdatum";
+  cardNo.placeholder = "kortnummer";
+  cardDate.placeholder = "utgångsdatum";
   cardCVC.placeholder = "CVC";
   submitButton.type = "submit";
   submitButton.value = "Slutför";
@@ -437,36 +433,7 @@ export function displayPaymentForm() {
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
 
-  firstName.setAttribute("required", "");
-  lastName.setAttribute("required", "");
-  personalNo.setAttribute("required", "");
-  phone.setAttribute("required", "");
-  mail.setAttribute("required", "");
-  streetName.setAttribute("required", "");
-  postalCode.setAttribute("required", "");
-  cityName.setAttribute("required", "");
-  countryName.setAttribute("required", "");
-  visaRadio.setAttribute("required", "");
-  cardNo.setAttribute("required", "");
-  cardDate.setAttribute("required", "");
-  cardCVC.setAttribute("required", "");
-
-  mail.type = "email";
-  phone.setAttribute("pattern", "[0-9]{3}-[0-9]{7}");
-  phone.title = "07X-XXXXXXX";
-  personalNo.setAttribute("pattern", "[0-9]{8}-[0-9]{4}");
-  personalNo.title = "ÅÅÅÅMMDD-XXXX";
-  postalCode.setAttribute("pattern", "[0-9]{5}");
-  postalCode.title = "t.ex: 12345";
-  cardNo.type = "number";
-  cardNo.setAttribute("pattern", "([0-9]{10})");
-  cardNo.title = "10 siffror";
-  cardDate.setAttribute("pattern", "[1-9]{2}-[1-9]{2}-[0-9]{4})");
-  cardDate.title = "DD-MM-ÅÅÅÅ";
-  cardCVC.setAttribute("pattern", "[0-9]{3}");
-  cardCVC.title = "3 siffror";
-
-  payForm.addEventListener("submit", () => {
+  submitButton.addEventListener("click", () => {
     localStorage.clear();
     displayConfirmation();
     cartBadge();

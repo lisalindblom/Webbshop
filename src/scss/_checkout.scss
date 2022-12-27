@@ -3,14 +3,42 @@
 @use "paymentForm";
 
 
+.container.row {
+  display: flex;
+  position: relative;
+  margin: auto !important;
+  justify-content: center;
+
+
+  .container__mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: min-content;
+    & div {
+      width: 100%;
+      border-bottom: 1px solid black;
+      & h3 {
+        font-size: medium;
+        font-weight: bold;
+      }
+    }
+    img {
+      height: 10vh;
+    }
+
+
   .totalSum {
     font-weight: bold;
     display: inline;
     border: 1px solid black;
     box-shadow: 2px 2px 2px black;
     padding: 1%;
-    margin: 5px;
+    width: fit-content;
   }
+}
+}
 
 
 
