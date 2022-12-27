@@ -131,7 +131,13 @@ export const showCart = (selectedItems: Products[]) => {
       container.appendChild(bookContainer);
     }
   }
-  displayPayButton();
+  if (!document.querySelector(".totalSum")) {
+  let sum = calcPrice(selectedItems).toString();
+  let totalSum = document.createElement("p");
+  totalSum.innerHTML = "Total summa: " + sum;
+  totalSum.classList.add("totalSum");
+  container.appendChild(totalSum);
+  }
 };
 
 function displayConfirmation() {
