@@ -424,8 +424,8 @@ export function displayPaymentForm() {
 
   submitButton.addEventListener("click", () => {
     localStorage.clear();
-    //måste uppdata så att det blir 0 i korgen
     displayConfirmation();
+    cartBadge();
   });
 }
 

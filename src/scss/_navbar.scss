@@ -4,8 +4,11 @@ body{
 
 
 
-.navbar-light {
-      
+
+
+.navbar{
+    background-color:  #74121D;
+    
     .cartContainer{
         position: absolute;
         right: 24%;
@@ -17,7 +20,7 @@ body{
     .navbar-toggler { 
         border: none;
         font-size: 2rem;
-        color: rgb(179, 30, 30);
+        color: rgb(255, 255, 255);
 
         .cartContainer{
             font-size: 2.5rem;
@@ -27,12 +30,18 @@ body{
     //färgen på ränderna 
     .navbar-toggler-icon {
 
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(179, 30, 30)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
        
     }
 
-   
+    .nav-link {
+        color: white;
+    }
+
+
 }
+
+
 
 
 // item badge // antal produkter i varukorgen
