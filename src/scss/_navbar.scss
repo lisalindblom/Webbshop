@@ -1,5 +1,5 @@
 body{
-    padding-top: 130px;
+    padding-top: 200px;
 }
 
 
@@ -7,10 +7,10 @@ body{
 
 
 .navbar{
-    background-color:  #74121D;
+    background-color:  #DD1C1A;
 
     .pageTitle {
-        color: white;
+        color: antiquewhite;
         font-size: 2rem;
         padding: 20px;
     }
@@ -26,34 +26,55 @@ body{
     .navbar-toggler { 
         border: none;
         font-size: 2rem;
-        color: rgb(255, 255, 255);
+        color: antiquewhite;
 
         .cartContainer{
             font-size: 2.5rem;
+            
         }
     }
 
     //färgen på ränderna 
     .navbar-toggler-icon {
 
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(250, 235, 215)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
        
     }
 
     .nav-link {
-        color: white;
+        color: antiquewhite;
     }
 
 
 }
 
 
+// logga
+
+.pageLogo {
+    border: 5px solid antiquewhite;
+    border-radius: 30%;
+    margin: 20px;
+    padding: 20px;
+    
+
+    #bookIcon {
+        color: antiquewhite;
+        //padding: 20px;
+        font-size: 3rem;
+    }
+
+}
+
+
+
 
 // item badge // antal produkter i varukorgen
 #cartItems, #cartItemsDesktop { 
     font-size:0.7rem;
-    color: white;
+    color: antiquewhite;
     background: red;
+    border: 1px solid white;
     border-radius:50%;
     padding: 0 5px;
     position:relative;

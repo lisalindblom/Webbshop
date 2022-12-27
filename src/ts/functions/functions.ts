@@ -135,14 +135,14 @@ export const showCart = (selectedItems: Products[]) => {
     totalSum.innerHTML = "Total summa: " + sum;
     totalSum.classList.add("totalSum");
 
-    const mainContainer = document.getElementById(
+    /*const mainContainer = document.getElementById(
       "mainContainer"
-    ) as HTMLDivElement;
-    mainContainer.appendChild(totalSum);
-
-    if (container.innerHTML === "") {
+    ) as HTMLDivElement; */
+    container.appendChild(totalSum);
+    /*
+    if (localStorage === null) {
       totalSum.style.display = "none";
-    }
+    } */
   }
   displayPayButton();
 };
