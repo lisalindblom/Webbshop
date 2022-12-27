@@ -1,10 +1,4 @@
-import {
-  cartBadge,
-  filterProducts,
-  handleCLick,
-  showProducts,
-} from "./functions/functions";
-import { Products } from "./models/models";
+import { cartBadge, filterProducts, showProducts } from "./functions/functions";
 
 import { products as filteredList } from "./services.ts/data";
 
