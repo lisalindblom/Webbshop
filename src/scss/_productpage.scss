@@ -42,7 +42,7 @@
         }
     }
     
-    @include mixins.tablet {
+    @include mixins.desktop {
         flex-direction: row;
         flex-wrap: wrap;
 
