@@ -138,6 +138,7 @@ export const showCart = (selectedItems: Products[]) => {
   totalSum.classList.add("totalSum");
   container.appendChild(totalSum);
   }
+  displayPayButton();
 };
 
 function displayConfirmation() {
