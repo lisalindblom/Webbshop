@@ -2,11 +2,14 @@
 @use 'navbar';
 @use 'footer';
 @use 'mixins';
+@use 'variables';
 
-body { 
- @include mixins.font;
+html { 
+font-family: variables.$font;
 }
-
+body {
+    margin: 0%;
+}
 
 
 #startpageWrapper {

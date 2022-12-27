@@ -1,44 +1,65 @@
 @use "navbar";
 @use "footer";
 @use "paymentForm";
+@use 'mixins';
+@use 'variables';
 
-
-.container.row {
-  display: flex;
-  position: relative;
-  margin: auto !important;
-  justify-content: center;
-
-
-  .container__mainContent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: min-content;
-    & div {
-      width: 100%;
-      border-bottom: 1px solid black;
-      & h3 {
-        font-size: medium;
-        font-weight: bold;
-      }
-    }
-    img {
-      height: 10vh;
-    }
-
-
-  .totalSum {
-    font-weight: bold;
-    display: inline;
-    border: 1px solid black;
-    box-shadow: 2px 2px 2px black;
-    padding: 1%;
-    width: fit-content;
+html { 
+  font-family: variables.$font;
   }
-}
-}
+  body {
+      margin: 0%;
+  }
 
+  .container.row {
+    display: flex;
+    position: relative;
+    margin: auto !important;
+    justify-content: center;
+    
+    .container__mainContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      // width: min-content;
+      & div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.386);
+        margin-bottom: 30px;
+        
+        button { 
+          border: none;
+          padding: 5px 10px 5px 10px;
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+        & h3 {
+          font-size: medium;
+          font-weight: bold;
+        }
+      }
+      img {
+        height: 10vh;
+      }
+  
+  
+    .totalSum {
+      font-weight: bold;
+      display: inline;
+      // border: 1px solid black;
+      // box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.333);
+      padding: 1%;
+      width: fit-content;
+    }
+  }
+  }
 
-
+  .payButton {
+    @include mixins.button;
+    width: 40%;
+    margin-bottom: 20px;
+  }
