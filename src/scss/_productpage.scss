@@ -6,19 +6,25 @@
 
 #filterForm {
     display: flex;
-    flex-direction: column;
-    background-color:#74121D; 
+    flex-direction: row;
+    // background-color:#74121D;
+    background-color: #cb5357; 
     padding: 20px;
     color: rgb(253, 246, 236);
     margin-bottom: 20px;
-    #btnSubmit {
-        margin-top: 20px;
-        width: 30%;
-        @include mixins.button;
-    }
+    justify-content: space-evenly;
+    // #btnSubmit {
+    //     margin-top: 20px;
+    //     width: 30%;
+    //     @include mixins.button;
+    // }
     
-    #btnSubmit:active {
-        background-color: #d2cecf;
+    // #btnSubmit:active {
+    //     background-color: #d2cecf;
+    // }
+    input {
+        display: none;
+
     }
 
 }

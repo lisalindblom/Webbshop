@@ -1,10 +1,9 @@
 @use 'mixins';
-@use 'variables';
+@use 'variables' as var;
 
 body{
     padding-top: 210px;
 }
-
 
 .navbar{
     background-color: white;
@@ -16,7 +15,6 @@ body{
         font-size: 2rem;
         font-weight: bold;
         padding-left: 20px;
-        
     }
     
     //varukorgen mobilversion
@@ -48,7 +46,7 @@ body{
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(168, 62, 65)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
     .nav-link {
-        color: #A63D40;
+        color: var.$primaryColor;
     }
 
    

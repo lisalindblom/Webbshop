@@ -138,7 +138,13 @@ export const showCart = (selectedItems: Products[]) => {
     totalSum.classList.add("totalSum");
     container.appendChild(totalSum);
   }
+  if (document.querySelector("img")) {
   displayPayButton();
+  }
+  else {
+    errorMsg("Varukorgen är tom");
+
+  }
 };
 
 function displayConfirmation() {
@@ -197,8 +203,7 @@ function displayPayButton() {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
 
   if (checkoutpageWrapper.innerHTML === "") {
-    isEmptyMessage.innerHTML = "Varukorgen är tom. Gå till produktsidan...";
-    container.appendChild(isEmptyMessage);
+    errorMsg("Varukorgen är tom");
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
@@ -478,23 +483,22 @@ export function filterProducts() {
 
   btnOne.addEventListener("click", () => {
     selectedFilter = "Alla";
+    filterAlternatives(filteredList);
   });
   btnTwo.addEventListener("click", () => {
     selectedFilter = "Pocket";
+    filterAlternatives(filteredList);
   });
   btnThree.addEventListener("click", () => {
     selectedFilter = "Häftad";
+    filterAlternatives(filteredList);
   });
   btnFour.addEventListener("click", () => {
     selectedFilter = "E-bok";
+    filterAlternatives(filteredList);
   });
   btnFive.addEventListener("click", () => {
     selectedFilter = "Inbunden";
-  });
-
-  let submit = document.getElementById("btnSubmit") as HTMLButtonElement;
-
-  submit.addEventListener("click", () => {
     filterAlternatives(filteredList);
   });
 
@@ -573,3 +577,11 @@ export const productSort = (
     }
   });
 };
+export const errorMsg = (errorMessage:string) => {
+  const container = document.getElementById("mainContainer") as HTMLDivElement;
+  container.innerHTML = "";
+  const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
+  isEmptyMessage.innerHTML = errorMessage;
+  container.appendChild(isEmptyMessage);
+
+}
