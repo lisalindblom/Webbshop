@@ -4,6 +4,11 @@
 @use 'mixins';
 @use 'variables' as var;
 
+
+#productpage {
+    font-weight: bold;
+}
+
 #filterForm {
     display: flex;
     flex-direction: row;
@@ -31,7 +36,7 @@
         }
     }
     div:hover {
-     background-color: #c66f72; 
+     background-color:#cf6164; 
     }
     @include mixins.tablet {
         flex-wrap: nowrap;
@@ -73,7 +78,7 @@
             color: whitesmoke;
         }
         button:active {
-            background-color: #d2cecf;
+            background-color: #cb535794;
         }
     }
     
