@@ -2,12 +2,15 @@
 @use "footer";
 @use "paymentForm";
 @use 'mixins';
-@use 'variables' as var;
+@use 'variables';
 @use 'messages';
 
 
-  html { 
-  font-family: var.$font;
+html { 
+  font-family: variables.$font;
+  }
+  body {
+      margin: 0%;
   }
 
   #checkout {
@@ -21,7 +24,6 @@
     position: relative;
     margin: auto !important;
     justify-content: center;
-    min-height: 70vh;
     
     .container__mainContent {
       display: flex;
@@ -67,8 +69,4 @@
     @include mixins.button;
     width: 40%;
     margin-bottom: 20px;
-    background-color: var.$secondaryColor;
-    color: white;
-    height: fit-content;
-    padding: 10px;
   }
