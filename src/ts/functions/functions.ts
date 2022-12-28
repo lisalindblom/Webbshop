@@ -434,6 +434,8 @@ export function displayPaymentForm() {
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
 
+  /*
+
   firstName.setAttribute("required", "");
   lastName.setAttribute("required", "");
   personalNo.setAttribute("required", "");
@@ -461,7 +463,7 @@ export function displayPaymentForm() {
   cardDate.setAttribute("pattern", "[1-9]{2}-[1-9]{2}-[0-9]{4})");
   cardDate.title = "DD-MM-ÅÅÅÅ";
   cardCVC.setAttribute("pattern", "[0-9]{3}");
-  cardCVC.title = "3 siffror";
+  cardCVC.title = "3 siffror"; */
 
   payForm.addEventListener("submit", () => {
     localStorage.clear();
