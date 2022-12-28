@@ -17,7 +17,7 @@ export const showProducts = (products: Products[]) => {
     let type = document.createElement("p");
     let price = document.createElement("p");
     let button = document.createElement("button");
-    button.innerHTML = "Buy";
+    button.innerHTML = "Köp";
     button.classList.add("buyButton");
     button.addEventListener("click", () => {
       handleCLick(products[i]);
@@ -33,7 +33,7 @@ export const showProducts = (products: Products[]) => {
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = (`${products[i].price}:-`);
+    price.innerHTML = `${products[i].price}:-`;
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -430,6 +430,35 @@ export function displayPaymentForm() {
   payForm.appendChild(cardDate);
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
+
+  firstName.setAttribute("required", "");
+  lastName.setAttribute("required", "");
+  personalNo.setAttribute("required", "");
+  phone.setAttribute("required", "");
+  mail.setAttribute("required", "");
+  streetName.setAttribute("required", "");
+  postalCode.setAttribute("required", "");
+  cityName.setAttribute("required", "");
+  countryName.setAttribute("required", "");
+  visaRadio.setAttribute("required", "");
+  cardNo.setAttribute("required", "");
+  cardDate.setAttribute("required", "");
+  cardCVC.setAttribute("required", "");
+
+  mail.type = "email";
+  phone.setAttribute("pattern", "[0-9]{3}-[0-9]{7}");
+  phone.title = "07X-XXXXXXX";
+  personalNo.setAttribute("pattern", "[0-9]{8}-[0-9]{4}");
+  personalNo.title = "ÅÅÅÅMMDD-XXXX";
+  postalCode.setAttribute("pattern", "[0-9]{5}");
+  postalCode.title = "t.ex: 12345";
+  cardNo.type = "number";
+  cardNo.setAttribute("pattern", "([0-9]{10})");
+  cardNo.title = "10 siffror";
+  cardDate.setAttribute("pattern", "[1-9]{2}-[1-9]{2}-[0-9]{4})");
+  cardDate.title = "DD-MM-ÅÅÅÅ";
+  cardCVC.setAttribute("pattern", "[0-9]{3}");
+  cardCVC.title = "3 siffror";
 
   submitButton.addEventListener("click", () => {
     localStorage.clear();

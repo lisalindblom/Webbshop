@@ -10,9 +10,10 @@ body{
     background-color:  #DD1C1A;
 
     .pageTitle {
-        color: antiquewhite;
-        font-size: 2rem;
+        color: white;
+        font-size: 5rem;
         padding: 20px;
+        font-family: 'Secular One', sans-serif;
     }
     
     .cartContainer{
@@ -42,7 +43,9 @@ body{
     }
 
     .nav-link {
-        color: antiquewhite;
+        color: white;
+        font-family: 'Secular One', sans-serif;
+        font-size: 1.5rem;
     }
 
 
@@ -59,7 +62,7 @@ body{
     
 
     #bookIcon {
-        color: antiquewhite;
+        color: white;
         //padding: 20px;
         font-size: 3rem;
     }
@@ -71,15 +74,15 @@ body{
 
 // item badge // antal produkter i varukorgen
 #cartItems, #cartItemsDesktop { 
-    font-size:0.7rem;
-    color: antiquewhite;
-    background: red;
+    font-size:1rem;
+    color:white;
+    background: green;
     border: 1px solid white;
     border-radius:50%;
     padding: 0 5px;
     position:relative;
     left:-5px;
-    top:-10px;
+    top:-20px;
     
 }
 
@@ -94,13 +97,49 @@ body{
      
         top:-20px;
         font-size: 1rem;
-       
+    }
+
+    }
+
+
+    .navbar{
+    
+        .pageTitle {
+            font-size: 2rem;
+            padding-left: 10px;
+        }
         
+        .cartContainer{
+            position: absolute;
+            right: 27%;
+            transform: translatex(100%);
+            font-size: 3rem;
+        }
+    
+        //storlek och border på hamburgaren 
+        .navbar-toggler { 
+            border: none;
+            font-size: 2rem;
+            color: white;
+    
+         
+        }
+    
+        .nav-link {
+            font-size: 1rem;
+
+            #cart{
+                font-size: 2.5rem;
+            }
+        }
+    
+    
     }
 
+    .pageLogo {
+        display: none;
+ 
     }
-
-
 
     
 }
