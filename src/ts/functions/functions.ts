@@ -360,7 +360,7 @@ export function displayPaymentForm() {
   postalCode.placeholder = "Postkod";
   cityName.placeholder = "Postort";
   countryName.placeholder = "Land";
-  paymentMessage.innerHTML = "Vargod välj betalningsätt:";
+  paymentMessage.innerHTML = "Var god välj betalningsätt:";
   visaRadio.type = "radio";
   visaRadio.name = "pay";
   visaText.innerHTML = "Visa";
@@ -370,8 +370,8 @@ export function displayPaymentForm() {
   klarnaRadio.type = "radio";
   klarnaRadio.name = "pay";
   klarnaText.innerHTML = "Klarna faktura";
-  cardNo.placeholder = "kortnummer";
-  cardDate.placeholder = "utgångsdatum";
+  cardNo.placeholder = "Kortnummer";
+  cardDate.placeholder = "Utgångsdatum";
   cardCVC.placeholder = "CVC";
   submitButton.type = "submit";
   submitButton.value = "Slutför";
@@ -401,7 +401,7 @@ export function displayPaymentForm() {
   cardNo.classList.add("formContainer__payForm--cardNo");
   cardDate.classList.add("formContainer__payForm--cardDate");
   cardCVC.classList.add("formContainer__payForm--cardCVC");
-  submitButton.classList.add("formContainer__payForm--sudmitButton");
+  submitButton.classList.add("formContainer__payForm--submitButton");
 
   mainContainer.appendChild(formContainer);
   formContainer.appendChild(payForm);
@@ -460,7 +460,7 @@ export function displayPaymentForm() {
   cardCVC.setAttribute("pattern", "[0-9]{3}");
   cardCVC.title = "3 siffror";
 
-  submitButton.addEventListener("click", () => {
+  payForm.addEventListener("submit", () => {
     localStorage.clear();
     displayConfirmation();
     cartBadge();
