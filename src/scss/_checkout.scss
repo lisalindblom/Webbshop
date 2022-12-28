@@ -24,6 +24,7 @@ html {
     position: relative;
     margin: auto !important;
     justify-content: center;
+    min-height: 80vh;
     
     .container__mainContent {
       display: flex;
@@ -41,13 +42,15 @@ html {
         
         button { 
           border: none;
-          padding: 5px 10px 5px 10px;
+          padding: 10px 10px 10px 10px;
           border-radius: 5px;
           margin-bottom: 10px;
+          height: fit-content;
         }
         & h3 {
           font-size: medium;
           font-weight: bold;
+          margin: 0;
         }
       }
       img {
@@ -64,9 +67,14 @@ html {
     }
   }
   
-
   .payButton {
     @include mixins.button;
     width: 40%;
     margin-bottom: 20px;
+    background-color: variables.$secondaryColor;
+    color: white;
+    height: fit-content;
+    padding: 10px;
   }
+
+  
