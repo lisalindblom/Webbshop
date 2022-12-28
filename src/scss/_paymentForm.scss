@@ -1,43 +1,36 @@
 @use 'mixins' as m;
+@use 'variables' as v;
 
 .formContainer__payForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:white; 
-    color: #FE938C;
+    color: black;
     font-family: 'Hind Madurai', sans-serif;
     input {
         background-color: white; 
         width: 70%;
-       border: 2px solid rgb(204, 196, 196);
-       margin: 3px;
+       margin: 5px;
        font-weight: bold;
+       border: 1px solid grey;
+       @include m.desktop {
+        width: 50%;
+       }
+   
        
     }
 
     &--cardContainer {
         display: flex;
-    
-      
-       
-        
     }
 
     &--submitButton {
 
         @include m.button;
-        
-
+        margin-bottom: 20px;
+    
     }
 
 }
 
-@include m.desktop {
-    .formContainer__payForm {
-        input {
-            width: 60%;
-        }
-    }
-}

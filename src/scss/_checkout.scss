@@ -3,6 +3,7 @@
 @use "paymentForm";
 @use 'mixins';
 @use 'variables';
+@use 'messages';
 
 html { 
   font-family: variables.$font;
@@ -44,6 +45,7 @@ html {
       }
       img {
         height: 10vh;
+        margin: 3px;
       }
   
   

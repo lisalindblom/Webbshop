@@ -139,11 +139,9 @@ export const showCart = (selectedItems: Products[]) => {
     container.appendChild(totalSum);
   }
   if (document.querySelector("img")) {
-  displayPayButton();
-  }
-  else {
+    displayPayButton();
+  } else {
     errorMsg("Varukorgen är tom");
-
   }
 };
 
@@ -577,11 +575,11 @@ export const productSort = (
     }
   });
 };
-export const errorMsg = (errorMessage:string) => {
+export const errorMsg = (errorMessage: string) => {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
   container.innerHTML = "";
   const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
+  isEmptyMessage.classList.add("isEmptyMsg");
   isEmptyMessage.innerHTML = errorMessage;
   container.appendChild(isEmptyMessage);
-
-}
+};
