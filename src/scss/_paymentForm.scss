@@ -1,3 +1,5 @@
+@use 'mixins' as m;
+
 .formContainer__payForm {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,12 @@
        margin: 3px;
        font-weight: bold;
        
+    }
+
+    &--submitButton {
+
+        @include m.button;
+
     }
 
 
