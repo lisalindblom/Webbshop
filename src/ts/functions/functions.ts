@@ -138,7 +138,13 @@ export const showCart = (selectedItems: Products[]) => {
     totalSum.classList.add("totalSum");
     container.appendChild(totalSum);
   }
+  if (document.querySelector("img")) {
   displayPayButton();
+  }
+  else {
+    errorMsg("Kundvagnen är tom");
+
+  }
 };
 
 function displayConfirmation() {
@@ -197,8 +203,7 @@ function displayPayButton() {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
 
   if (checkoutpageWrapper.innerHTML === "") {
-    isEmptyMessage.innerHTML = "Varukorgen är tom. Gå till produktsidan...";
-    container.appendChild(isEmptyMessage);
+    errorMsg("Kundvagnen är tom");
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
@@ -544,3 +549,11 @@ export const productSort = (
     }
   });
 };
+export const errorMsg = (errorMessage:string) => {
+  const container = document.getElementById("mainContainer") as HTMLDivElement;
+  container.innerHTML = "";
+  const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
+  isEmptyMessage.innerHTML = errorMessage;
+  container.appendChild(isEmptyMessage);
+
+}
