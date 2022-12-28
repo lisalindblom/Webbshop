@@ -9,7 +9,7 @@
     color: black;
     font-family: 'Hind Madurai', sans-serif;
     input {
-        background-color: white; 
+        
         width: 70%;
        margin: 5px;
        border: 1px solid grey;
@@ -22,17 +22,19 @@
 
     &--cardContainer {
 
-        
         input[type="radio"]{   
             width: auto;
          }
     }
 
     &--submitButton {
-
         @include m.button;
+        width: 40%;
         margin-bottom: 20px;
-    
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+        background-color:v.$secondaryColor;
     }
 
 }
