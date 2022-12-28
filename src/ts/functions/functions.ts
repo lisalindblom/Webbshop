@@ -142,7 +142,7 @@ export const showCart = (selectedItems: Products[]) => {
   displayPayButton();
   }
   else {
-    errorMsg("Kundvagnen är tom");
+    errorMsg("Varukorgen är tom");
 
   }
 };
@@ -203,7 +203,7 @@ function displayPayButton() {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
 
   if (checkoutpageWrapper.innerHTML === "") {
-    errorMsg("Kundvagnen är tom");
+    errorMsg("Varukorgen är tom");
   }
 
   if (checkoutpageWrapper.innerHTML !== "") {
