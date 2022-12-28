@@ -12,7 +12,6 @@
         background-color: white; 
         width: 70%;
        margin: 5px;
-       font-weight: bold;
        border: 1px solid grey;
        @include m.desktop {
         width: 50%;
@@ -22,7 +21,11 @@
     }
 
     &--cardContainer {
-        display: flex;
+
+        
+        input[type="radio"]{   
+            width: auto;
+         }
     }
 
     &--submitButton {
