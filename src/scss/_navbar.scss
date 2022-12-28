@@ -2,7 +2,7 @@
 @use 'variables' as var;
 
 body{
-    padding-top: 100px;
+    padding-top: 210px;
 }
 
 .navbar{
@@ -19,32 +19,34 @@ body{
         padding-left: 20px;
     }
     
+    //varukorgen mobilversion
     .cartContainer{
         position: absolute;
-        // right: 24%;
-        right: 26%;
+        right: 24%;
         transform: translatex(100%);
-        //position: fixed;
     }
 
     //storlek och border på hamburgaren 
     .navbar-toggler { 
         border: none;
         font-size: 2rem;
-        color: antiquewhite;
+        color: rgb(134, 22, 87);
     
         .cartContainer{
             font-size: 2.5rem;  
+            margin-right: 15px;
+
+            #cartItems { 
+                top:-20px;
+                font-size: 1rem;
+                
+            }
         }
     }
-
-
     //färgen på ränderna 
     .navbar-toggler-icon {
-        color: var.$primaryColor;
-        // background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(250, 235, 215)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(134, 22, 87)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
-
     .nav-link {
         color: var.$primaryColor;
     }
@@ -53,50 +55,53 @@ body{
 
 // logga
 .pageLogo {
-    border: 5px solid antiquewhite;
-    border-radius: 30%;
-    margin: 20px;
-    padding: 20px;
-    
+    display: none;
 
-    #bookIcon {
-        color: antiquewhite;
-        padding: 20px;
-        font-size: 3rem;
     }
-
-}
-
-
 
 
 // item badge // antal produkter i varukorgen
 #cartItems, #cartItemsDesktop { 
-    font-size:0.7rem;
-    color: antiquewhite;
+    font-size:1rem;
+    color:white;
     background: red;
-    border: 1px solid white;
     border-radius:50%;
     padding: 0 5px;
     position:relative;
     left:-5px;
-    top:-10px;
+    top:-20px;
     
 }
 
-//mobilstorlek item badge
 
-@include mixins.tablet {
 
-    .cartContainer{
-        margin-right: 13px;
 
-    #cartItems { 
-     
-        top:-20px;
-        font-size: 1rem;  
-    }
+@include mixins.desktop {
 
-    }
+    .pageLogo {
+        display: inline;
+        border: 5px solid rgb(134, 22, 87);
+        border-radius: 50%;
+        margin-right: 10px;
+        margin-left: 20px;
+        padding: 5px;
     
+
+    #bookIcon {
+        color: rgb(134, 22, 87);
+        //padding: 20px;
+        font-size: 3rem;
+    
+        } }
+
+
 }
+
+        
+       
+        
+
+
+   
+
+    
