@@ -176,7 +176,7 @@ function displayConfirmation() {
   orderNo.innerHTML = Math.random().toString();
   confirmationMessage.innerHTML =
     "Tack för ditt köp! Detta är en bekfräftelse av din order från Selmas Böcker. Du kommer att få ett mejl med spårningsnummer så fort din vara har lämnat vårt lager";
-  toStarPage.innerHTML = "Till startsidan";
+  toStarPage.innerHTML = "till startsidan";
   toStarPage.href = "/src/index.html";
 
   container.appendChild(messageContainer);
@@ -372,7 +372,7 @@ export function displayPaymentForm() {
   masterText.innerHTML = "Master Card";
   klarnaRadio.type = "radio";
   klarnaRadio.name = "pay";
-  klarnaText.innerHTML = "Klarna faktura";
+  klarnaText.innerHTML = "Faktura";
   cardNo.placeholder = "Kortnummer";
   cardDate.placeholder = "Utgångsdatum";
   cardCVC.placeholder = "CVC";
