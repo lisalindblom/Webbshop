@@ -2,7 +2,7 @@
 @use 'variables' as var;
 
 body{
-    padding-top: 210px;
+    padding-top: 120px;
 }
 
 .navbar{
@@ -47,13 +47,15 @@ body{
     }
     .nav-link {
         color: var.$primaryColor;
+        font-size: 1.5rem;
     }
-
-   
 
     
 }
 
+#desktopCart {
+    visibility: hidden;
+}
 
 // logga
 .pageLogo {
@@ -98,6 +100,10 @@ body{
         #cartItemsDesktop { 
           
             top:-15px; 
+        }
+
+        #desktopCart {
+            visibility: visible;
         }
 
 }
