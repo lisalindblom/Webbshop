@@ -33,7 +33,7 @@ export const showProducts = (products: Products[]) => {
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = (`${products[i].price}:-`);
+    price.innerHTML = `${products[i].price}:-`;
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -449,23 +449,22 @@ export function filterProducts() {
 
   btnOne.addEventListener("click", () => {
     selectedFilter = "Alla";
+    filterAlternatives(filteredList);
   });
   btnTwo.addEventListener("click", () => {
     selectedFilter = "Pocket";
+    filterAlternatives(filteredList);
   });
   btnThree.addEventListener("click", () => {
     selectedFilter = "Häftad";
+    filterAlternatives(filteredList);
   });
   btnFour.addEventListener("click", () => {
     selectedFilter = "E-bok";
+    filterAlternatives(filteredList);
   });
   btnFive.addEventListener("click", () => {
     selectedFilter = "Inbunden";
-  });
-
-  let submit = document.getElementById("btnSubmit") as HTMLButtonElement;
-
-  submit.addEventListener("click", () => {
     filterAlternatives(filteredList);
   });
 

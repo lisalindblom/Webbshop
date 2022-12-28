@@ -1,10 +1,9 @@
 @use 'mixins';
-@use 'variables';
+@use 'variables' as var;
 
 body{
     padding-top: 100px;
 }
-
 
 .navbar{
     background-color: white;
@@ -12,11 +11,12 @@ body{
 
     .pageTitle {
        
-        color: rgb(134, 22, 87);
+        // color: var.$primaryColor;
+        color: #a63d40;
+        // color: #FF5A5F;
         font-size: 2rem;
         font-weight: bold;
         padding-left: 20px;
-        
     }
     
     .cartContainer{
@@ -32,7 +32,6 @@ body{
         border: none;
         font-size: 2rem;
         color: antiquewhite;
-        
     
         .cartContainer{
             font-size: 2.5rem;  
@@ -42,12 +41,12 @@ body{
 
     //färgen på ränderna 
     .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(250, 235, 215)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        color: var.$primaryColor;
+        // background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(250, 235, 215)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     .nav-link {
-        // color: antiquewhite;
-        color: rgb(134, 22, 87);
+        color: var.$primaryColor;
     }
 }
 
@@ -62,7 +61,7 @@ body{
 
     #bookIcon {
         color: antiquewhite;
-        //padding: 20px;
+        padding: 20px;
         font-size: 3rem;
     }
 
@@ -99,8 +98,5 @@ body{
     }
 
     }
-
-
-
     
 }
