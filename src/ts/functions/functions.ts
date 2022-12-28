@@ -17,7 +17,7 @@ export const showProducts = (products: Products[]) => {
     let type = document.createElement("p");
     let price = document.createElement("p");
     let button = document.createElement("button");
-    button.innerHTML = "Buy";
+    button.innerHTML = "Köp";
     button.classList.add("buyButton");
     button.addEventListener("click", () => {
       handleCLick(products[i]);
@@ -33,7 +33,7 @@ export const showProducts = (products: Products[]) => {
     title.innerHTML = products[i].title;
     img.src = products[i].img;
     type.innerHTML = products[i].type;
-    price.innerHTML = (`${products[i].price}:-`);
+    price.innerHTML = `${products[i].price}:-`;
 
     bookContainer.appendChild(title);
     bookContainer.appendChild(img);
@@ -365,7 +365,7 @@ export function displayPaymentForm() {
   postalCode.placeholder = "Postkod";
   cityName.placeholder = "Postort";
   countryName.placeholder = "Land";
-  paymentMessage.innerHTML = "Vargod välj betalningsätt:";
+  paymentMessage.innerHTML = "Var god välj betalningsätt:";
   visaRadio.type = "radio";
   visaRadio.name = "pay";
   visaText.innerHTML = "Visa";
@@ -375,8 +375,8 @@ export function displayPaymentForm() {
   klarnaRadio.type = "radio";
   klarnaRadio.name = "pay";
   klarnaText.innerHTML = "Klarna faktura";
-  cardNo.placeholder = "kortnummer";
-  cardDate.placeholder = "utgångsdatum";
+  cardNo.placeholder = "Kortnummer";
+  cardDate.placeholder = "Utgångsdatum";
   cardCVC.placeholder = "CVC";
   submitButton.type = "submit";
   submitButton.value = "Slutför";
@@ -406,7 +406,7 @@ export function displayPaymentForm() {
   cardNo.classList.add("formContainer__payForm--cardNo");
   cardDate.classList.add("formContainer__payForm--cardDate");
   cardCVC.classList.add("formContainer__payForm--cardCVC");
-  submitButton.classList.add("formContainer__payForm--sudmitButton");
+  submitButton.classList.add("formContainer__payForm--submitButton");
 
   mainContainer.appendChild(formContainer);
   formContainer.appendChild(payForm);
@@ -436,7 +436,36 @@ export function displayPaymentForm() {
   payForm.appendChild(cardCVC);
   payForm.appendChild(submitButton);
 
-  submitButton.addEventListener("click", () => {
+  firstName.setAttribute("required", "");
+  lastName.setAttribute("required", "");
+  personalNo.setAttribute("required", "");
+  phone.setAttribute("required", "");
+  mail.setAttribute("required", "");
+  streetName.setAttribute("required", "");
+  postalCode.setAttribute("required", "");
+  cityName.setAttribute("required", "");
+  countryName.setAttribute("required", "");
+  visaRadio.setAttribute("required", "");
+  cardNo.setAttribute("required", "");
+  cardDate.setAttribute("required", "");
+  cardCVC.setAttribute("required", "");
+
+  mail.type = "email";
+  phone.setAttribute("pattern", "[0-9]{3}-[0-9]{7}");
+  phone.title = "07X-XXXXXXX";
+  personalNo.setAttribute("pattern", "[0-9]{8}-[0-9]{4}");
+  personalNo.title = "ÅÅÅÅMMDD-XXXX";
+  postalCode.setAttribute("pattern", "[0-9]{5}");
+  postalCode.title = "t.ex: 12345";
+  cardNo.type = "number";
+  cardNo.setAttribute("pattern", "([0-9]{10})");
+  cardNo.title = "10 siffror";
+  cardDate.setAttribute("pattern", "[1-9]{2}-[1-9]{2}-[0-9]{4})");
+  cardDate.title = "DD-MM-ÅÅÅÅ";
+  cardCVC.setAttribute("pattern", "[0-9]{3}");
+  cardCVC.title = "3 siffror";
+
+  payForm.addEventListener("submit", () => {
     localStorage.clear();
     displayConfirmation();
     cartBadge();
@@ -454,23 +483,22 @@ export function filterProducts() {
 
   btnOne.addEventListener("click", () => {
     selectedFilter = "Alla";
+    filterAlternatives(filteredList);
   });
   btnTwo.addEventListener("click", () => {
     selectedFilter = "Pocket";
+    filterAlternatives(filteredList);
   });
   btnThree.addEventListener("click", () => {
     selectedFilter = "Häftad";
+    filterAlternatives(filteredList);
   });
   btnFour.addEventListener("click", () => {
     selectedFilter = "E-bok";
+    filterAlternatives(filteredList);
   });
   btnFive.addEventListener("click", () => {
     selectedFilter = "Inbunden";
-  });
-
-  let submit = document.getElementById("btnSubmit") as HTMLButtonElement;
-
-  submit.addEventListener("click", () => {
     filterAlternatives(filteredList);
   });
 
