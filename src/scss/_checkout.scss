@@ -5,6 +5,7 @@
 @use 'variables';
 @use 'messages';
 
+
 html { 
   font-family: variables.$font;
   }
@@ -12,18 +13,25 @@ html {
       margin: 0%;
   }
 
+  #checkout {
+    font-weight: bold;
+  }
+
+
+  
   .container.row {
     display: flex;
     position: relative;
     margin: auto !important;
     justify-content: center;
+    min-height: 80vh;
     
     .container__mainContent {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      // width: min-content;
+      
       & div {
         display: flex;
         flex-direction: row;
@@ -45,13 +53,15 @@ html {
         
         button { 
           border: none;
-          padding: 5px 10px 5px 10px;
+          padding: 10px 10px 10px 10px;
           border-radius: 5px;
           margin-bottom: 10px;
+          height: fit-content;
         }
         & h3 {
           font-size: medium;
           font-weight: bold;
+          margin: 0;
         }
       }
       img {
@@ -59,20 +69,23 @@ html {
         margin: 3px;
       }
   
-  
+    }
     .totalSum {
       font-weight: bold;
       display: inline;
-      // border: 1px solid black;
-      // box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.333);
       padding: 1%;
       width: fit-content;
     }
   }
-  }
-
+  
   .payButton {
     @include mixins.button;
     width: 40%;
     margin-bottom: 20px;
+    background-color: variables.$secondaryColor;
+    color: white;
+    height: fit-content;
+    padding: 10px;
   }
+
+  
