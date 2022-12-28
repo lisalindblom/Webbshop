@@ -579,6 +579,7 @@ export const errorMsg = (errorMessage: string) => {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
   container.innerHTML = "";
   const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
+  isEmptyMessage.classList.add("isEmptyMsg");
   isEmptyMessage.innerHTML = errorMessage;
   container.appendChild(isEmptyMessage);
 };

@@ -1,0 +1,16 @@
+@use "mixins" as m;
+
+.container {
+
+   .isEmptyMsg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 80%;
+    height: 100px;
+    box-shadow: 0 0 5px 0 rgb(140, 135, 135);
+    
+   }
+}
