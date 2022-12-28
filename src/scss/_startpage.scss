@@ -4,6 +4,9 @@
 @use 'mixins';
 @use 'variables';
 
+/***********************************/
+@import url('https://fonts.googleapis.com/css2?family=Spectral+SC:wght@300&display=swap');
+/**********************************/
 html { 
 font-family: variables.$font;
 }
@@ -14,6 +17,12 @@ body {
 
 #startpageWrapper {
     min-height: 90vh;
+
+    /***********************************/
+    h1 {
+        font-family: 'Spectral SC', serif;
+    }
+    /***********************************/
  
     #startpagePresentation {
     display: flex;
@@ -21,22 +30,35 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 
+    img {
+        align-self: baseline;
+        justify-self: flex-end;
+    }
     #startpagePresentationText{
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+
         
         #aboutSelma {
+            // background-color: rgba(250, 235, 215, 0.353);
+            padding: 10px;
+            border-radius: 5px;
             font-style: italic;
         }
         a {
             text-decoration: none;
             color: black;
+            align-self: flex-end;
+            
         }
     }
     
     @include mixins.tablet {
         flex-direction: row;
         img {
-            width: 40%;
+            // width: 40%;
+            height: 80vh;
         }
     }
 }
