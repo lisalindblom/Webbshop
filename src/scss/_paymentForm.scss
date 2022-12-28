@@ -10,18 +10,32 @@
     font-family: 'Hind Madurai', sans-serif;
     input {
         background-color: white; 
-        width: 50%;
+        width: 70%;
        border: 2px solid rgb(204, 196, 196);
        margin: 3px;
        font-weight: bold;
        
     }
 
+    &--cardContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
     &--submitButton {
 
         @include m.button;
+        
 
     }
 
+}
 
+@include m.desktop {
+    .formContainer__payForm {
+        input {
+            width: 60%;
+        }
+    }
 }

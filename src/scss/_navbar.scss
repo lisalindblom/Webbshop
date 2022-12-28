@@ -12,7 +12,7 @@ body{
 
     .pageTitle {
        
-        color: rgb(134, 22, 87);
+        color: #A63D40;
         font-size: 2rem;
         font-weight: bold;
         padding-left: 20px;
@@ -30,7 +30,7 @@ body{
     .navbar-toggler { 
         border: none;
         font-size: 2rem;
-        color: rgb(134, 22, 87);
+        color: rgb(168, 62, 65);
     
         .cartContainer{
             font-size: 2.5rem;  
@@ -45,11 +45,15 @@ body{
     }
     //färgen på ränderna 
     .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(134, 22, 87)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(168, 62, 65)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
     .nav-link {
-        color: rgb(134, 22, 87);
+        color: #A63D40;
     }
+
+   
+
+    
 }
 
 
@@ -58,7 +62,6 @@ body{
     display: none;
 
     }
-
 
 // item badge // antal produkter i varukorgen
 #cartItems, #cartItemsDesktop { 
@@ -80,7 +83,7 @@ body{
 
     .pageLogo {
         display: inline;
-        border: 5px solid rgb(134, 22, 87);
+        border: 5px solid #A63D40;
         border-radius: 50%;
         margin-right: 10px;
         margin-left: 20px;
@@ -88,12 +91,16 @@ body{
     
 
     #bookIcon {
-        color: rgb(134, 22, 87);
+        color: #A63D40;
         //padding: 20px;
         font-size: 3rem;
     
         } }
-
+        
+        #cartItemsDesktop { 
+          
+            top:-15px; 
+        }
 
 }
 
