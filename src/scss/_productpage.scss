@@ -9,11 +9,18 @@
     flex-direction: column;
     background-color:#74121D; 
     padding: 20px;
-    color: antiquewhite;
+    color: rgb(253, 246, 236);
     margin-bottom: 20px;
     #btnSubmit {
+        margin-top: 20px;
         width: 30%;
+        @include mixins.button;
     }
+    
+    #btnSubmit:active {
+        background-color: #d2cecf;
+    }
+
 }
 #productpageWrapper {
     display: flex;
@@ -25,31 +32,48 @@
     
     [class$=bookContainer] {
         // border: solid  black 2px;
+        display: flex;
+        flex-direction: column;
         padding: 10px;
         width: 80vw;
         margin-bottom: 20px; 
         box-shadow: 0 5px 5px 0 #cab4b6;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+            width: 70%;
+        }
 
         .price {
-            
             height: 40px;
             width: 40px;
             border-radius: 50%;
-            text-align: center;
-            box-shadow: 0px 5px 5px 1px #cab4b6;
             padding-top: 10px;
             font-weight: bolder;
         }
+
+        button {
+            @include mixins.button;
+            width: 90%;
+            
+        }
+        button:active {
+            background-color: #d2cecf;
+        }
     }
     
-    @include mixins.desktop {
-        flex-direction: row;
-        flex-wrap: wrap;
-
+    @include mixins.tablet {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        row-gap: 20px;
+        column-gap: 20px;
+        
+        
         [class$=bookContainer] {
             padding: 10px;
-            width: 30%;
-            height: 500px;
+            height:fit-content;
+            width: auto;   
         }
        
     }
