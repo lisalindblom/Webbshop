@@ -20,27 +20,31 @@ export const showProducts = (products: Products[]) => {
       button.classList.add("buyButton");
       button.addEventListener("click", () => {
         handleCLick(products[i]);
+        console.log(products[i]);
         ///CARTBADGE
         cartBadge();
       });
 
+      console.log(products[i].year);
+
       //-----------------modal-----
-      const modalBuyBtn = document.getElementById(
-        "modalBuyBtn"
-      ) as HTMLButtonElement;
 
-      modalBuyBtn.addEventListener("click", () => {
-        handleCLick(products[i]);
-        cartBadge();
-      });
-
-      img.addEventListener("click", () => {
-        displayModal(products[i]);
-      });
       img.setAttribute("data-bs-toggle", "modal");
       img.setAttribute("data-bs-target", "#exampleModal");
       img.classList.add("bookImg");
 
+      img.addEventListener("click", () => {
+        displayModal(products[i]);
+      });
+      // let modalBuyBtn = document.getElementById(
+      //   "modalBuyBtn"
+      // ) as HTMLButtonElement;
+
+      // modalBuyBtn.addEventListener("click", () => {
+      //   handleCLick(products[i]);
+      //   console.log(products[i].title);
+      //   cartBadge();
+      // });
       //------------------------------------
 
       bookContainer.classList.add(products[i].type);
@@ -598,7 +602,43 @@ export const errorMsg = (errorMessage: string) => {
   container.appendChild(isEmptyMessage);
 };
 
-function displayModal(products: Products) {
+// function displayModal(products: Products) {
+//   const modalBody: HTMLDivElement = document.getElementById(
+//     "modal-body"
+//   ) as HTMLDivElement;
+//   modalBody.innerHTML = "";
+//   const modalTitle: HTMLHeadingElement = document.getElementById(
+//     "exampleModalLabel"
+//   ) as HTMLHeadingElement;
+
+//   let productlist: Products = products;
+
+//   const img = document.createElement("img");
+//   const type = document.createElement("p");
+//   const year = document.createElement("p");
+//   const desc = document.createElement("p");
+//   const price = document.createElement("p");
+
+//   let yearString = productlist.year.toString();
+//   let priceString = productlist.price.toString();
+
+//   img.src = productlist.img;
+//   modalTitle.innerHTML = productlist.title;
+//   type.innerHTML = productlist.type;
+//   year.innerHTML = yearString;
+//   desc.innerHTML = productlist.description;
+//   price.innerHTML = `${priceString}:-`;
+
+//   modalBody.appendChild(img);
+//   modalBody.appendChild(type);
+//   modalBody.appendChild(year);
+//   modalBody.appendChild(desc);
+//   modalBody.appendChild(price);
+// }
+
+/**************************************test****************************************************** */
+
+function displayModal(modalProduct: Products) {
   const modalBody: HTMLDivElement = document.getElementById(
     "modal-body"
   ) as HTMLDivElement;
@@ -607,7 +647,7 @@ function displayModal(products: Products) {
     "exampleModalLabel"
   ) as HTMLHeadingElement;
 
-  let productlist: Products = products;
+  let productlist: Products = modalProduct;
 
   const img = document.createElement("img");
   const type = document.createElement("p");
@@ -630,4 +670,12 @@ function displayModal(products: Products) {
   modalBody.appendChild(year);
   modalBody.appendChild(desc);
   modalBody.appendChild(price);
+
+  let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
+
+  modalBuyBtn.addEventListener("click", () => {
+    handleCLick(modalProduct);
+    console.log(modalProduct.title);
+    cartBadge();
+  });
 }
