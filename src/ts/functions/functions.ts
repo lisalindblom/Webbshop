@@ -5,11 +5,10 @@ import { products, selectedItems } from "../services.ts/data";
 import { products as filteredList } from "../services.ts/data";
 
 export const showProducts = (products: Products[]) => {
-  productSort(selectedItems);
   let container = document.getElementById(
     "productpageWrapper"
   ) as HTMLDivElement;
-
+  try {
   for (let i = 0; i < products.length; i++) {
     let bookContainer = document.createElement("div");
     let title = document.createElement("h3");
@@ -42,7 +41,12 @@ export const showProducts = (products: Products[]) => {
     bookContainer.appendChild(button);
     container.appendChild(bookContainer);
   }
+}
+catch(e) {
+  errorMsg("Något gick fel...");
+}
 };
+
 
 //Hantera klick/köp
 export const handleCLick = (product: Products) => {
@@ -568,7 +572,7 @@ export const productSort = (
   });
 };
 export const errorMsg = (errorMessage: string) => {
-  const container = document.getElementById("mainContainer") as HTMLDivElement;
+  const container = document.querySelector("main") as HTMLDivElement;
   container.innerHTML = "";
   const isEmptyMessage: HTMLParagraphElement = document.createElement("p");
   isEmptyMessage.classList.add("isEmptyMsg");
