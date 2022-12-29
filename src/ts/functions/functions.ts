@@ -20,12 +20,10 @@ export const showProducts = (products: Products[]) => {
       button.classList.add("buyButton");
       button.addEventListener("click", () => {
         handleCLick(products[i]);
-        console.log(products[i]);
+
         ///CARTBADGE
         cartBadge();
       });
-
-      console.log(products[i].year);
 
       //-----------------modal-----
 
@@ -674,8 +672,8 @@ function displayModal(modalProduct: Products) {
   let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
 
   modalBuyBtn.addEventListener("click", () => {
-    handleCLick(modalProduct);
-    console.log(modalProduct.title);
+    handleCLick(productlist);
+    console.log(productlist);
     cartBadge();
   });
 }
