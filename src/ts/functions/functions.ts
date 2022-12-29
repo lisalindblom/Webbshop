@@ -117,7 +117,7 @@ export const showCart = (selectedItems: Products[]) => {
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
-      price.innerHTML = `Pris: ${selectedItems[i].price} :- st`;
+      price.innerHTML = `${selectedItems[i].price} :- st`;
       title.innerHTML = selectedItems[i].title;
       img.src = selectedItems[i].img;
 

@@ -35,10 +35,21 @@ html {
       & div {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
+        justify-content: space-around;
+        width: 95vw;
         border-bottom: 1px solid rgba(0, 0, 0, 0.386);
         margin-bottom: 30px;
+        @include mixins.desktop {
+          width: 100%;
+        }
+
+        & :nth-child(2) {
+          font-size: 0.9rem;
+          width: 20%;
+        }
+        & :last-child {
+          font-weight: bold;
+        }
         
         button { 
           border: none;
