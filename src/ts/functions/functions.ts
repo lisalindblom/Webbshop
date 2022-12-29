@@ -39,6 +39,7 @@ export const showProducts = (products: Products[]) => {
       });
       img.setAttribute("data-bs-toggle", "modal");
       img.setAttribute("data-bs-target", "#exampleModal");
+      img.classList.add("bookImg");
 
       //------------------------------------
 
