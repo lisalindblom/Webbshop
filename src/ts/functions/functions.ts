@@ -48,7 +48,6 @@ export const showProducts = (products: Products[]) => {
 export const handleCLick = (product: Products) => {
   selectedItems.push(product);
   localStorage.setItem("storageList", JSON.stringify(selectedItems));
-  console.log(selectedItems);
   let sum: number = calcPrice(selectedItems);
   if (document.getElementById("checkoutpageWrapper")) {
     let container = document.getElementById(
@@ -58,7 +57,6 @@ export const handleCLick = (product: Products) => {
 
     showCart(selectedItems);
   }
-  console.log(sum);
   return sum;
 };
 
@@ -231,8 +229,6 @@ export function cartBadge() {
 
   const cart2 = document.getElementById("cartItemsDesktop") as HTMLSpanElement;
   cart2.innerHTML = badgeNumber.toString();
-
-  console.log(cart1.innerHTML);
 }
 
 //Hantera bortagning av 1 produkt
@@ -262,7 +258,6 @@ export const handleRemove = (target: number, noOfProducts: number) => {
   ) as HTMLDivElement;
   container.innerHTML = "";
   showCart(selectedItems);
-  console.log(selectedItems);
 };
 
 // Hantera delete.
@@ -283,7 +278,6 @@ export const handleDelete = (target: number) => {
     ) as HTMLDivElement;
     container.innerHTML = "";
     showCart(selectedItems);
-    console.log(selectedItems);
   }
 };
 
@@ -299,7 +293,6 @@ export const handleAdd = (target: number) => {
       container.innerHTML = "";
       showCart(selectedItems);
       let sum: number = calcPrice(selectedItems);
-      console.log(sum);
       return sum;
     }
   }
@@ -506,7 +499,6 @@ export function filterProducts() {
     });
 
     if (selectedFilter === "Alla") {
-      console.log("alla");
       let container = document.getElementById(
         "productpageWrapper"
       ) as HTMLDivElement;

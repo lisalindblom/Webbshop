@@ -67,7 +67,7 @@ body{
     }
 
 // item badge // antal produkter i varukorgen
-#cartItems, #cartItemsDesktop { 
+#cartItems { 
     font-size:1rem;
     color:white;
     background: red;
@@ -76,6 +76,24 @@ body{
     position:relative;
     left:-5px;
     top:-20px;
+    
+}
+
+#cartItemsDesktop { 
+ display: none;
+    @include mixins.desktop {
+        display: inline;
+        font-size:1rem;
+        color:white;
+        background: red;
+        border-radius:50%;
+        padding: 0 5px;
+        position:relative;
+        left:-5px;
+        top:-20px;
+    }
+
+
     
 }
 .pageLogo {
