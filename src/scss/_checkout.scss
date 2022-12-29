@@ -8,84 +8,82 @@
 
 html { 
   font-family: variables.$font;
-  }
-  body {
-      margin: 0%;
-  }
+}
+ 
+#checkout {
+  font-weight: bold;
+}
 
-  #checkout {
-    font-weight: bold;
-  }
-
-
+.container.row {
+  display: flex;
+  position: relative;
+  margin: auto !important;
+  justify-content: center;
+  min-height: 80vh;
   
-  .container.row {
+  .container__mainContent {
     display: flex;
-    position: relative;
-    margin: auto !important;
+    align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    flex-direction: column;
     
-    .container__mainContent {
+    & div {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 95vw;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.386);
+      margin-bottom: 30px;
+      @include mixins.desktop {
+        width: 100%;
+      }
+
+      & :nth-child(2) {
+        font-size: 0.9rem;
+        width: 20%;
+      }
+      & :last-child {
+        font-weight: bold;
+      }
       
-      & div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 95vw;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.386);
-        margin-bottom: 30px;
-        @include mixins.desktop {
-          width: 100%;
-        }
-
-        & :nth-child(2) {
-          font-size: 0.9rem;
-          width: 20%;
-        }
-        & :last-child {
-          font-weight: bold;
-        }
-        
-        button { 
-          border: none;
-          padding: 10px 10px 10px 10px;
-          border-radius: 5px;
-          margin-bottom: 10px;
-          height: fit-content;
-        }
-        & h3 {
-          font-size: medium;
-          font-weight: bold;
-          margin: 0;
-        }
+      button { 
+        border: none;
+        padding: 10px 10px 10px 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        height: fit-content;
       }
-      img {
-        height: 10vh;
-        margin: 3px;
+      button:active {
+        background-color: rgb(220, 216, 216);
       }
-  
+      & h3 {
+        font-size: medium;
+        font-weight: bold;
+        margin: 0;
+      }
     }
-    .totalSum {
-      font-weight: bold;
-      display: inline;
-      padding: 1%;
-      width: fit-content;
+    img {
+      height: 10vh;
+      margin: 3px;
     }
-  }
-  
-  .payButton {
-    @include mixins.button;
-    width: 40%;
-    margin-bottom: 20px;
-    background-color: variables.$secondaryColor;
-    color: white;
-    height: fit-content;
-    padding: 10px;
-  }
 
-  
+  }
+  .totalSum {
+    font-weight: bold;
+    display: inline;
+    padding: 1%;
+    width: fit-content;
+  }
+}
+
+.payButton {
+  @include mixins.button;
+  width: 40%;
+  margin-bottom: 20px;
+  height: fit-content;
+  padding: 10px;
+}
+.payButton:active {
+  background-color: #cb535794;
+}
+

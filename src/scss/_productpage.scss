@@ -71,11 +71,9 @@
             font-weight: bolder;
         }
 
-        button {
+        .buyButton {
             @include mixins.button;
             width: 90%;
-            background-color: var.$secondaryColor;
-            color: whitesmoke;
         }
         button:active {
             background-color: #cb535794;

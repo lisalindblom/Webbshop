@@ -33,8 +33,9 @@
         margin-bottom: 20px;
         font-size: 1.3rem;
         font-weight: bold;
-        color: white;
-        background-color:v.$secondaryColor;
+    }
+    &--submitButton:active {
+        background-color: #cb535794;
     }
 
 }
