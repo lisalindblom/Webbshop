@@ -9,44 +9,61 @@ export const showProducts = (products: Products[]) => {
     "productpageWrapper"
   ) as HTMLDivElement;
   try {
-  for (let i = 0; i < products.length; i++) {
-    let bookContainer = document.createElement("div");
-    let title = document.createElement("h3");
-    let img = document.createElement("img");
-    let type = document.createElement("p");
-    let price = document.createElement("p");
-    let button = document.createElement("button");
-    button.innerHTML = "Köp";
-    button.classList.add("buyButton");
-    button.addEventListener("click", () => {
-      handleCLick(products[i]);
-      ///CARTBADGE
-      cartBadge();
-    });
-    bookContainer.classList.add(products[i].type);
-    bookContainer.classList.add("bookContainer");
-    price.classList.add(
-      "price"
-    ); /****************************************************************** */
+    for (let i = 0; i < products.length; i++) {
+      let bookContainer = document.createElement("div");
+      let title = document.createElement("h3");
+      let img = document.createElement("img");
+      let type = document.createElement("p");
+      let price = document.createElement("p");
+      let button = document.createElement("button");
+      button.innerHTML = "Köp";
+      button.classList.add("buyButton");
+      button.addEventListener("click", () => {
+        handleCLick(products[i]);
+        ///CARTBADGE
+        cartBadge();
+      });
 
-    title.innerHTML = products[i].title;
-    img.src = products[i].img;
-    type.innerHTML = products[i].type;
-    price.innerHTML = `${products[i].price}:-`;
+      //-----------------modal-----
+      const modalBuyBtn = document.getElementById(
+        "modalBuyBtn"
+      ) as HTMLButtonElement;
 
-    bookContainer.appendChild(title);
-    bookContainer.appendChild(img);
-    bookContainer.appendChild(type);
-    bookContainer.appendChild(price);
-    bookContainer.appendChild(button);
-    container.appendChild(bookContainer);
+      modalBuyBtn.addEventListener("click", () => {
+        handleCLick(products[i]);
+        cartBadge();
+      });
+
+      img.addEventListener("click", () => {
+        displayModal(products[i]);
+      });
+      img.setAttribute("data-bs-toggle", "modal");
+      img.setAttribute("data-bs-target", "#exampleModal");
+
+      //------------------------------------
+
+      bookContainer.classList.add(products[i].type);
+      bookContainer.classList.add("bookContainer");
+      price.classList.add(
+        "price"
+      ); /****************************************************************** */
+
+      title.innerHTML = products[i].title;
+      img.src = products[i].img;
+      type.innerHTML = products[i].type;
+      price.innerHTML = `${products[i].price}:-`;
+
+      bookContainer.appendChild(title);
+      bookContainer.appendChild(img);
+      bookContainer.appendChild(type);
+      bookContainer.appendChild(price);
+      bookContainer.appendChild(button);
+      container.appendChild(bookContainer);
+    }
+  } catch (e) {
+    errorMsg("Något gick fel...");
   }
-}
-catch(e) {
-  errorMsg("Något gick fel...");
-}
 };
-
 
 //Hantera klick/köp
 export const handleCLick = (product: Products) => {
@@ -579,3 +596,37 @@ export const errorMsg = (errorMessage: string) => {
   isEmptyMessage.innerHTML = errorMessage;
   container.appendChild(isEmptyMessage);
 };
+
+function displayModal(products: Products) {
+  const modalBody: HTMLDivElement = document.getElementById(
+    "modal-body"
+  ) as HTMLDivElement;
+  modalBody.innerHTML = "";
+  const modalTitle: HTMLHeadingElement = document.getElementById(
+    "exampleModalLabel"
+  ) as HTMLHeadingElement;
+
+  let productlist: Products = products;
+
+  const img = document.createElement("img");
+  const type = document.createElement("p");
+  const year = document.createElement("p");
+  const desc = document.createElement("p");
+  const price = document.createElement("p");
+
+  let yearString = productlist.year.toString();
+  let priceString = productlist.price.toString();
+
+  img.src = productlist.img;
+  modalTitle.innerHTML = productlist.title;
+  type.innerHTML = productlist.type;
+  year.innerHTML = yearString;
+  desc.innerHTML = productlist.description;
+  price.innerHTML = `${priceString}:-`;
+
+  modalBody.appendChild(img);
+  modalBody.appendChild(type);
+  modalBody.appendChild(year);
+  modalBody.appendChild(desc);
+  modalBody.appendChild(price);
+}

@@ -1,0 +1,26 @@
+@use 'mixins' as m;
+@use 'variables' as v;
+
+#modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #modalBuyBtn {
+    background-color: v.$secondaryColor;
+    @include m.button;
+    width: 90%;
+    color: white;
+
+  }
+}
