@@ -645,22 +645,20 @@ function displayModal(modalProduct: Products) {
     "exampleModalLabel"
   ) as HTMLHeadingElement;
 
-  let productlist: Products = modalProduct;
-
   const img = document.createElement("img");
   const type = document.createElement("p");
   const year = document.createElement("p");
   const desc = document.createElement("p");
   const price = document.createElement("p");
 
-  let yearString = productlist.year.toString();
-  let priceString = productlist.price.toString();
+  let yearString = modalProduct.year.toString();
+  let priceString = modalProduct.price.toString();
 
-  img.src = productlist.img;
-  modalTitle.innerHTML = productlist.title;
-  type.innerHTML = productlist.type;
+  img.src = modalProduct.img;
+  modalTitle.innerHTML = modalProduct.title;
+  type.innerHTML = modalProduct.type;
   year.innerHTML = yearString;
-  desc.innerHTML = productlist.description;
+  desc.innerHTML = modalProduct.description;
   price.innerHTML = `${priceString}:-`;
 
   modalBody.appendChild(img);
@@ -669,11 +667,16 @@ function displayModal(modalProduct: Products) {
   modalBody.appendChild(desc);
   modalBody.appendChild(price);
 
+  console.log(modalProduct.title, modalProduct.price);
+
   let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
+  modalBuyBtn.setAttribute("type", "submit");
 
   modalBuyBtn.addEventListener("click", () => {
-    handleCLick(productlist);
-    console.log(productlist);
+    handleCLick(modalProduct);
+    console.log(modalProduct);
     cartBadge();
   });
+
+  // modalProduct = [];
 }
