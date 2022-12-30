@@ -551,7 +551,6 @@ export function filterProducts() {
       bookContainer.classList.add(filteredList[i].type);
       bookContainer.classList.add("bookContainer");
       price.classList.add("price");
-      /***************************************** */
 
       title.innerHTML = filteredList[i].title;
       img.src = filteredList[i].img;
@@ -596,42 +595,6 @@ export const errorMsg = (errorMessage: string) => {
   container.appendChild(isEmptyMessage);
 };
 
-// function displayModal(products: Products) {
-//   const modalBody: HTMLDivElement = document.getElementById(
-//     "modal-body"
-//   ) as HTMLDivElement;
-//   modalBody.innerHTML = "";
-//   const modalTitle: HTMLHeadingElement = document.getElementById(
-//     "exampleModalLabel"
-//   ) as HTMLHeadingElement;
-
-//   let productObj: Products = products;
-
-//   const img = document.createElement("img");
-//   const type = document.createElement("p");
-//   const year = document.createElement("p");
-//   const desc = document.createElement("p");
-//   const price = document.createElement("p");
-
-//   let yearString = productObj.year.toString();
-//   let priceString = productObj.price.toString();
-
-//   img.src = productObj.img;
-//   modalTitle.innerHTML = productObj.title;
-//   type.innerHTML = productObj.type;
-//   year.innerHTML = yearString;
-//   desc.innerHTML = productObj.description;
-//   price.innerHTML = `${priceString}:-`;
-
-//   modalBody.appendChild(img);
-//   modalBody.appendChild(type);
-//   modalBody.appendChild(year);
-//   modalBody.appendChild(desc);
-//   modalBody.appendChild(price);
-// }
-
-/**************************************test****************************************************** */
-
 function displayModal(modalProduct: Products) {
   const modalBody: HTMLDivElement = document.getElementById(
     "modal-body"
@@ -641,18 +604,12 @@ function displayModal(modalProduct: Products) {
     "exampleModalLabel"
   ) as HTMLHeadingElement;
 
-<<<<<<< HEAD
-=======
-  let productObj: Products = modalProduct;
-
->>>>>>> 23d00fa140229c0277623d4c4cdfcda4e2e94e7f
   const img = document.createElement("img");
   const type = document.createElement("p");
   const year = document.createElement("p");
   const desc = document.createElement("p");
   const price = document.createElement("p");
 
-<<<<<<< HEAD
   let yearString = modalProduct.year.toString();
   let priceString = modalProduct.price.toString();
 
@@ -661,16 +618,6 @@ function displayModal(modalProduct: Products) {
   type.innerHTML = modalProduct.type;
   year.innerHTML = yearString;
   desc.innerHTML = modalProduct.description;
-=======
-  let yearString = productObj.year.toString();
-  let priceString = productObj.price.toString();
-
-  img.src = productObj.img;
-  modalTitle.innerHTML = productObj.title;
-  type.innerHTML = productObj.type;
-  year.innerHTML = yearString;
-  desc.innerHTML = productObj.description;
->>>>>>> 23d00fa140229c0277623d4c4cdfcda4e2e94e7f
   price.innerHTML = `${priceString}:-`;
 
   modalBody.appendChild(img);
@@ -679,21 +626,9 @@ function displayModal(modalProduct: Products) {
   modalBody.appendChild(desc);
   modalBody.appendChild(price);
 
-  console.log(modalProduct.title, modalProduct.price);
-
   let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
-  modalBuyBtn.setAttribute("type", "submit");
-
   modalBuyBtn.addEventListener("click", () => {
-<<<<<<< HEAD
     handleCLick(modalProduct);
-    console.log(modalProduct);
-=======
-    handleCLick(productObj);
-    console.log(productObj);
->>>>>>> 23d00fa140229c0277623d4c4cdfcda4e2e94e7f
     cartBadge();
   });
-
-  // modalProduct = [];
 }
