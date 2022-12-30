@@ -609,10 +609,4 @@ function displayModal(modalProduct: Products) {
   modalBody.appendChild(year);
   modalBody.appendChild(desc);
   modalBody.appendChild(price);
-
-  let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
-  modalBuyBtn.addEventListener("click", () => {
-    handleCLick(modalProduct);
-    cartBadge();
-  });
 }
