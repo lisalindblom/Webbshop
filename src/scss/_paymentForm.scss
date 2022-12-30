@@ -9,22 +9,18 @@
     color: black;
     font-family: 'Hind Madurai', sans-serif;
     input {
-        
         width: 70%;
        margin: 5px;
        border: 1px solid grey;
        @include m.desktop {
         width: 50%;
        }
-   
-       
     }
 
     &--cardContainer {
-
         input[type="radio"]{   
             width: auto;
-         }
+        }
     }
 
     &--submitButton {
@@ -37,6 +33,5 @@
     &--submitButton:active {
         background-color: #cb535794;
     }
-
 }
 

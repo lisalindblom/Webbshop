@@ -78,7 +78,6 @@ export const handleCLick = (product: Products) => {
       "checkoutpageWrapper"
     ) as HTMLDivElement;
     container.innerHTML = "";
-
     showCart(selectedItems);
   }
   return sum;
@@ -125,17 +124,14 @@ export const showCart = (selectedItems: Products[]) => {
 
       addButton.addEventListener("click", () => {
         handleAdd(selectedItems[i].id);
-        ///CARTBADGE
         cartBadge();
       });
       removeButton.addEventListener("click", () => {
         handleRemove(selectedItems[i].id, noOfProducts);
-        ///CARTBADGE
         cartBadge();
       });
       deleteButton.addEventListener("click", () => {
         handleDelete(selectedItems[i].id);
-        ///CARTBADGE
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
@@ -609,7 +605,7 @@ export const errorMsg = (errorMessage: string) => {
 //     "exampleModalLabel"
 //   ) as HTMLHeadingElement;
 
-//   let productlist: Products = products;
+//   let productObj: Products = products;
 
 //   const img = document.createElement("img");
 //   const type = document.createElement("p");
@@ -617,14 +613,14 @@ export const errorMsg = (errorMessage: string) => {
 //   const desc = document.createElement("p");
 //   const price = document.createElement("p");
 
-//   let yearString = productlist.year.toString();
-//   let priceString = productlist.price.toString();
+//   let yearString = productObj.year.toString();
+//   let priceString = productObj.price.toString();
 
-//   img.src = productlist.img;
-//   modalTitle.innerHTML = productlist.title;
-//   type.innerHTML = productlist.type;
+//   img.src = productObj.img;
+//   modalTitle.innerHTML = productObj.title;
+//   type.innerHTML = productObj.type;
 //   year.innerHTML = yearString;
-//   desc.innerHTML = productlist.description;
+//   desc.innerHTML = productObj.description;
 //   price.innerHTML = `${priceString}:-`;
 
 //   modalBody.appendChild(img);
@@ -645,7 +641,7 @@ function displayModal(modalProduct: Products) {
     "exampleModalLabel"
   ) as HTMLHeadingElement;
 
-  let productlist: Products = modalProduct;
+  let productObj: Products = modalProduct;
 
   const img = document.createElement("img");
   const type = document.createElement("p");
@@ -653,14 +649,14 @@ function displayModal(modalProduct: Products) {
   const desc = document.createElement("p");
   const price = document.createElement("p");
 
-  let yearString = productlist.year.toString();
-  let priceString = productlist.price.toString();
+  let yearString = productObj.year.toString();
+  let priceString = productObj.price.toString();
 
-  img.src = productlist.img;
-  modalTitle.innerHTML = productlist.title;
-  type.innerHTML = productlist.type;
+  img.src = productObj.img;
+  modalTitle.innerHTML = productObj.title;
+  type.innerHTML = productObj.type;
   year.innerHTML = yearString;
-  desc.innerHTML = productlist.description;
+  desc.innerHTML = productObj.description;
   price.innerHTML = `${priceString}:-`;
 
   modalBody.appendChild(img);
@@ -672,8 +668,8 @@ function displayModal(modalProduct: Products) {
   let modalBuyBtn = document.getElementById("modalBuyBtn") as HTMLButtonElement;
 
   modalBuyBtn.addEventListener("click", () => {
-    handleCLick(productlist);
-    console.log(productlist);
+    handleCLick(productObj);
+    console.log(productObj);
     cartBadge();
   });
 }
