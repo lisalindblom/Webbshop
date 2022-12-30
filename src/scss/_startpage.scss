@@ -3,14 +3,9 @@
 @use "mixins";
 @use "variables";
 
-/***********************************/
-@import url("https://fonts.googleapis.com/css2?family=Spectral+SC:wght@300&display=swap");
-/**********************************/
+
 html {
   font-family: variables.$font;
-}
-body {
-  margin: 0%;
 }
 
 #startpage {
@@ -19,13 +14,6 @@ body {
 
 #startpageWrapper {
   min-height: 90vh;
-
-  /***********************************/
-  h1 {
-    font-family: "Spectral SC", serif;
-    text-align: center;
-  }
-  /***********************************/
 
   #startpagePresentation {
     display: flex;
@@ -39,7 +27,6 @@ body {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-
     }
 
     img {
