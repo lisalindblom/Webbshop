@@ -21,11 +21,8 @@ export const showProducts = (products: Products[]) => {
       button.addEventListener("click", () => {
         handleCLick(products[i]);
 
-        ///CARTBADGE
         cartBadge();
       });
-
-      //-----------------modal-----
 
       img.setAttribute("data-bs-toggle", "modal");
       img.setAttribute("data-bs-target", "#exampleModal");
@@ -34,22 +31,10 @@ export const showProducts = (products: Products[]) => {
       img.addEventListener("click", () => {
         displayModal(products[i]);
       });
-      // let modalBuyBtn = document.getElementById(
-      //   "modalBuyBtn"
-      // ) as HTMLButtonElement;
-
-      // modalBuyBtn.addEventListener("click", () => {
-      //   handleCLick(products[i]);
-      //   console.log(products[i].title);
-      //   cartBadge();
-      // });
-      //------------------------------------
 
       bookContainer.classList.add(products[i].type);
       bookContainer.classList.add("bookContainer");
-      price.classList.add(
-        "price"
-      ); /****************************************************************** */
+      price.classList.add("price");
 
       title.innerHTML = products[i].title;
       img.src = products[i].img;
@@ -94,7 +79,7 @@ const calcPrice = (selectedItems: Products[]) => {
   return sum;
 };
 
-// Testfunktion för att skriva ut kundvagnen
+// funktion för att skriva ut kundvagnen
 
 export const showCart = (selectedItems: Products[]) => {
   let container = document.getElementById(
@@ -301,7 +286,6 @@ export const handleDelete = (target: number) => {
   }
 };
 
-// Testfunktkion för add
 export const handleAdd = (target: number) => {
   for (let i = selectedItems.length - 1; i >= 0; i--) {
     if (target === selectedItems[i].id) {
