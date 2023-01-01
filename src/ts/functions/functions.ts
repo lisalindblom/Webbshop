@@ -185,7 +185,7 @@ export const displayConfirmation = () => {
   messageContainer.appendChild(orderNo);
   messageContainer.appendChild(confirmationMessage);
   messageContainer.appendChild(toStarPage);
-}
+};
 
 export const displayPayButton = () => {
   let checkoutpageWrapper = document.getElementById(
@@ -220,7 +220,7 @@ export const displayPayButton = () => {
   } else {
     payButton.style.display = "none"; //??? måste funka när man tömmer korgen
   }
-}
+};
 
 export const cartBadge = () => {
   let LSgetList: string = localStorage.getItem("storageList") || "[]";
@@ -232,7 +232,7 @@ export const cartBadge = () => {
 
   const cart2 = document.getElementById("cartItemsDesktop") as HTMLSpanElement;
   cart2.innerHTML = badgeNumber.toString();
-}
+};
 
 //Hantera bortagning av 1 produkt
 export const handleRemove = (target: number, noOfProducts: number) => {
@@ -462,7 +462,7 @@ export const displayPaymentForm = () => {
     displayConfirmation();
     cartBadge();
   });
-}
+};
 
 export const filterProducts = () => {
   let btnOne = document.getElementById("btnOne") as HTMLInputElement;
@@ -494,7 +494,7 @@ export const filterProducts = () => {
     filterAlternatives(filteredList);
   });
 
-  function filterAlternatives(products: Products[]) {
+  const filterAlternatives = (products: Products[]) => {
     let filteredList = products.filter((book) => {
       return book.type === selectedFilter;
     });
@@ -548,7 +548,7 @@ export const filterProducts = () => {
       container.appendChild(bookContainer);
     }
   };
-}
+};
 
 // Sorteringsfunktion av köplistan. -- gör så artiklarna inte hoppar runt när man raderar.
 export const productSort = (
@@ -608,4 +608,4 @@ export const displayModal = (modalProduct: Products) => {
   modalBody.appendChild(year);
   modalBody.appendChild(desc);
   modalBody.appendChild(price);
-}
+};
