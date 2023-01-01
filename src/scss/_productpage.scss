@@ -2,7 +2,7 @@
 @use 'navbar';
 @use 'footer';
 @use 'mixins';
-@use 'variables' as var;
+@use 'variables';
 @use 'bookModal';
 
 
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: var.$secondaryColor; 
+    background-color: variables.$secondaryColor; 
     color: rgb(253, 246, 236);
     margin-bottom: 20px;
     justify-content: space-evenly;

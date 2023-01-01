@@ -1,4 +1,4 @@
-import { cartBadge, displayPaymentForm, showCart } from "./functions/functions";
+import { cartBadge, showCart } from "./functions/functions";
 import { selectedItems } from "./services.ts/data";
 showCart(selectedItems);
 

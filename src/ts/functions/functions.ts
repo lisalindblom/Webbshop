@@ -20,34 +20,21 @@ export const showProducts = (products: Products[]) => {
       button.classList.add("buyButton");
       button.addEventListener("click", () => {
         handleCLick(products[i]);
-        ///CARTBADGE
+
         cartBadge();
       });
 
-      //-----------------modal-----
-      const modalBuyBtn = document.getElementById(
-        "modalBuyBtn"
-      ) as HTMLButtonElement;
-
-      modalBuyBtn.addEventListener("click", () => {
-        handleCLick(products[i]);
-        cartBadge();
-      });
-
-      img.addEventListener("click", () => {
-        displayModal(products[i]);
-      });
       img.setAttribute("data-bs-toggle", "modal");
       img.setAttribute("data-bs-target", "#exampleModal");
       img.classList.add("bookImg");
 
-      //------------------------------------
+      img.addEventListener("click", () => {
+        displayModal(products[i]);
+      });
 
       bookContainer.classList.add(products[i].type);
       bookContainer.classList.add("bookContainer");
-      price.classList.add(
-        "price"
-      ); /****************************************************************** */
+      price.classList.add("price");
 
       title.innerHTML = products[i].title;
       img.src = products[i].img;
@@ -90,7 +77,7 @@ const calcPrice = (selectedItems: Products[]) => {
   return sum;
 };
 
-// Testfunktion för att skriva ut kundvagnen
+// funktion för att skriva ut kundvagnen
 
 export const showCart = (selectedItems: Products[]) => {
   let container = document.getElementById(
@@ -120,17 +107,14 @@ export const showCart = (selectedItems: Products[]) => {
 
       addButton.addEventListener("click", () => {
         handleAdd(selectedItems[i].id);
-        ///CARTBADGE
         cartBadge();
       });
       removeButton.addEventListener("click", () => {
         handleRemove(selectedItems[i].id, noOfProducts);
-        ///CARTBADGE
         cartBadge();
       });
       deleteButton.addEventListener("click", () => {
         handleDelete(selectedItems[i].id);
-        ///CARTBADGE
         cartBadge();
       });
       bookContainer.classList.add(selectedItems[i].type);
@@ -300,7 +284,6 @@ export const handleDelete = (target: number) => {
   }
 };
 
-// Testfunktkion för add
 export const handleAdd = (target: number) => {
   for (let i = selectedItems.length - 1; i >= 0; i--) {
     if (target === selectedItems[i].id) {
@@ -550,7 +533,6 @@ export function filterProducts() {
       bookContainer.classList.add(filteredList[i].type);
       bookContainer.classList.add("bookContainer");
       price.classList.add("price");
-      /***************************************** */
 
       title.innerHTML = filteredList[i].title;
       img.src = filteredList[i].img;
@@ -595,7 +577,7 @@ export const errorMsg = (errorMessage: string) => {
   container.appendChild(isEmptyMessage);
 };
 
-function displayModal(products: Products) {
+function displayModal(modalProduct: Products) {
   const modalBody: HTMLDivElement = document.getElementById(
     "modal-body"
   ) as HTMLDivElement;
@@ -604,22 +586,20 @@ function displayModal(products: Products) {
     "exampleModalLabel"
   ) as HTMLHeadingElement;
 
-  let productlist: Products = products;
-
   const img = document.createElement("img");
   const type = document.createElement("p");
   const year = document.createElement("p");
   const desc = document.createElement("p");
   const price = document.createElement("p");
 
-  let yearString = productlist.year.toString();
-  let priceString = productlist.price.toString();
+  let yearString = modalProduct.year.toString();
+  let priceString = modalProduct.price.toString();
 
-  img.src = productlist.img;
-  modalTitle.innerHTML = productlist.title;
-  type.innerHTML = productlist.type;
+  img.src = modalProduct.img;
+  modalTitle.innerHTML = modalProduct.title;
+  type.innerHTML = modalProduct.type;
   year.innerHTML = yearString;
-  desc.innerHTML = productlist.description;
+  desc.innerHTML = modalProduct.description;
   price.innerHTML = `${priceString}:-`;
 
   modalBody.appendChild(img);

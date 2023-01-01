@@ -1,4 +1,3 @@
-import { cartBadge, showProducts } from "./functions/functions";
-import { products } from "./services.ts/data";
+import { cartBadge } from "./functions/functions";
 
 cartBadge();
