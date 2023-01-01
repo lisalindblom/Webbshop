@@ -70,16 +70,13 @@ export const showProducts = (products: Products[]) => {
 export const handleCLick = (product: Products) => {
   selectedItems.push(product);
   localStorage.setItem("storageList", JSON.stringify(selectedItems));
-  let sum: number = calcPrice(selectedItems);
   if (document.getElementById("checkoutpageWrapper")) {
     let container = document.getElementById(
       "checkoutpageWrapper"
     ) as HTMLDivElement;
     container.innerHTML = "";
-
     showCart(selectedItems);
   }
-  return sum;
 };
 
 //Kalkylera totalsumman
