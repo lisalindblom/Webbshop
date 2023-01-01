@@ -529,6 +529,7 @@ export const filterProducts = () => {
       button.classList.add("buyButton");
       button.addEventListener("click", () => {
         handleCLick(filteredList[i]);
+        cartBadge();
       });
       bookContainer.classList.add(filteredList[i].type);
       bookContainer.classList.add("bookContainer");
