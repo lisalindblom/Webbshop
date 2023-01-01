@@ -1,7 +1,7 @@
 // Funktion för att skriva ut produkter/lista
 
 import { Products } from "../models/models";
-import { products, selectedItems } from "../services.ts/data";
+import { selectedItems } from "../services.ts/data";
 import { products as filteredList } from "../services.ts/data";
 
 export const showProducts = (products: Products[]) => {
@@ -146,7 +146,7 @@ export const showCart = (selectedItems: Products[]) => {
   }
 };
 
-function displayConfirmation() {
+export const displayConfirmation = () => {
   const container = document.getElementById("mainContainer") as HTMLDivElement;
   container.innerHTML = "";
 
@@ -187,7 +187,7 @@ function displayConfirmation() {
   messageContainer.appendChild(toStarPage);
 }
 
-function displayPayButton() {
+export const displayPayButton = () => {
   let checkoutpageWrapper = document.getElementById(
     "checkoutpageWrapper"
   ) as HTMLDivElement;
@@ -222,7 +222,7 @@ function displayPayButton() {
   }
 }
 
-export function cartBadge() {
+export const cartBadge = () => {
   let LSgetList: string = localStorage.getItem("storageList") || "[]";
   let LSListJSON: Products[] = JSON.parse(LSgetList);
 
@@ -294,8 +294,7 @@ export const handleAdd = (target: number) => {
       ) as HTMLDivElement;
       container.innerHTML = "";
       showCart(selectedItems);
-      let sum: number = calcPrice(selectedItems);
-      return sum;
+      return 0;
     }
   }
 };
@@ -311,7 +310,7 @@ export const counter = (products: Products[], target: string) => {
   return sum;
 };
 
-export function displayPaymentForm() {
+export const displayPaymentForm = () => {
   const formContainer: HTMLDivElement = document.createElement("div");
   const payForm: HTMLFormElement = document.createElement("form");
   const formTitle: HTMLElement = document.createElement("h2");
@@ -465,7 +464,7 @@ export function displayPaymentForm() {
   });
 }
 
-export function filterProducts() {
+export const filterProducts = () => {
   let btnOne = document.getElementById("btnOne") as HTMLInputElement;
   let btnTwo = document.getElementById("btnTwo") as HTMLInputElement;
   let btnThree = document.getElementById("btnThree") as HTMLInputElement;
@@ -526,7 +525,8 @@ export function filterProducts() {
       let type = document.createElement("p");
       let price = document.createElement("p");
       let button = document.createElement("button");
-      button.innerHTML = "Buy";
+      button.innerHTML = "Köp";
+      button.classList.add("buyButton");
       button.addEventListener("click", () => {
         handleCLick(filteredList[i]);
       });
@@ -577,7 +577,7 @@ export const errorMsg = (errorMessage: string) => {
   container.appendChild(isEmptyMessage);
 };
 
-function displayModal(modalProduct: Products) {
+export const displayModal = (modalProduct: Products) => {
   const modalBody: HTMLDivElement = document.getElementById(
     "modal-body"
   ) as HTMLDivElement;
