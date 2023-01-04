@@ -509,7 +509,7 @@ export const filterProducts = () => {
     } else {
       showFilteredProducts(filteredList);
     }
-  }
+  };
 
   const showFilteredProducts = (filteredList: Products[]) => {
     let container = document.getElementById(
@@ -538,7 +538,7 @@ export const filterProducts = () => {
       title.innerHTML = filteredList[i].title;
       img.src = filteredList[i].img;
       type.innerHTML = filteredList[i].type;
-      price.innerHTML = JSON.stringify(filteredList[i].price);
+      price.innerHTML = JSON.stringify(filteredList[i].price) + ":-";
 
       bookContainer.appendChild(title);
       bookContainer.appendChild(img);
